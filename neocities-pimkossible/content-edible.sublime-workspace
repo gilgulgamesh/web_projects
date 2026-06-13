@@ -1,0 +1,1144 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"fun",
+				"function"
+			],
+			[
+				"Com",
+				"component\tinline component"
+			],
+			[
+				"in",
+				"includet"
+			],
+			[
+				"two",
+				"\\twoheaduparrow"
+			],
+			[
+				"twoheadup",
+				"\\twoheaduparrow"
+			],
+			[
+				"toparro",
+				"\\twoheaduparrow"
+			],
+			[
+				"uparrow",
+				"\\upuparrows"
+			],
+			[
+				"top",
+				"\\twoheaduparrow"
+			],
+			[
+				"t",
+				"typeof"
+			],
+			[
+				"a",
+				"angle"
+			],
+			[
+				"TU",
+				"TURTLE_HEIGHT"
+			],
+			[
+				"rightarrow",
+				"\\rightarrowtriangle"
+			],
+			[
+				"r",
+				"radius"
+			],
+			[
+				"del",
+				"\\del"
+			],
+			[
+				"ci",
+				"circumference"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"contents": "Package Control Messages\n========================\n\n\nSublimeLinter\n-------------\n\n  \n    ____        _     _ _                _     _       _\n   / ___| _   _| |__ | (_)_ __ ___   ___| |   (_)_ __ | |_ ___ _ __\n   \\___ \\| | | | '_ \\| | | '_ ` _ \\ / _ \\ |   | | '_ \\| __/ _ \\ '__|\n    ___) | |_| | |_) | | | | | | | |  __/ |___| | | | | ||  __/ |\n   |____/ \\__,_|_.__/|_|_|_| |_| |_|\\___|_____|_|_| |_|\\__\\___|_|\n  \n  \n  *** As of April 2024, the current stable version of Sublime Text, Build 4169,\n  has a bug and cannot install SublimeLinter without a restart.  You're fine\n  if you have a later dev build, e.g. build 4173 has a better experience. ***\n  \n  \n  Welcome to SublimeLinter, a linter framework for Sublime Text.\n  \n  Linters are not included, they must be installed separately.\n  Get them from Package Control: https://packagecontrol.io/search/SublimeLinter\n  \n  *** We're in a transition phase to the newer ST4 plugin host.  Unless we have\n  more experience for the process, it _may_ be necessary to restart Sublime Text\n  after installing or upgrading helper packages.  Just check if everything works\n  or if the console shows permanent errors.  On my machine, no restarts were\n  necessary. ***\n  \n  \n  For complete documentation on how to use and configure SublimeLinter,\n  please see: http://www.sublimelinter.com\n  \n  To report issues: https://github.com/SublimeLinter/SublimeLinter\n\n\nSublimeLinter-contrib-csstree\n-----------------------------\n\n  SublimeLinter-contrib-csstree\n  -------------------------------\n  This linter plugin for SublimeLinter provides an interface to csstree-validator.\n  \n  ** IMPORTANT! **\n  \n  Before this plugin will activate, you *must*\n  follow the installation instructions here:\n  \n  https://github.com/csstree/SublimeLinter-contrib-csstree\n",
+			"settings":
+			{
+				"buffer_size": 1789,
+				"line_ending": "Windows",
+				"name": "Package Control Messages",
+				"read_only": true,
+				"scratch": true
+			},
+			"undo_stack":
+			[
+				[
+					1,
+					1,
+					"package_control_message",
+					{
+						"message": "\n\nSublimeLinter\n-------------\n\n  \n    ____        _     _ _                _     _       _\n   / ___| _   _| |__ | (_)_ __ ___   ___| |   (_)_ __ | |_ ___ _ __\n   \\___ \\| | | | '_ \\| | | '_ ` _ \\ / _ \\ |   | | '_ \\| __/ _ \\ '__|\n    ___) | |_| | |_) | | | | | | | |  __/ |___| | | | | ||  __/ |\n   |____/ \\__,_|_.__/|_|_|_| |_| |_|\\___|_____|_|_| |_|\\__\\___|_|\n  \n  \n  *** As of April 2024, the current stable version of Sublime Text, Build 4169,\n  has a bug and cannot install SublimeLinter without a restart.  You're fine\n  if you have a later dev build, e.g. build 4173 has a better experience. ***\n  \n  \n  Welcome to SublimeLinter, a linter framework for Sublime Text.\n  \n  Linters are not included, they must be installed separately.\n  Get them from Package Control: https://packagecontrol.io/search/SublimeLinter\n  \n  *** We're in a transition phase to the newer ST4 plugin host.  Unless we have\n  more experience for the process, it _may_ be necessary to restart Sublime Text\n  after installing or upgrading helper packages.  Just check if everything works\n  or if the console shows permanent errors.  On my machine, no restarts were\n  necessary. ***\n  \n  \n  For complete documentation on how to use and configure SublimeLinter,\n  please see: http://www.sublimelinter.com\n  \n  To report issues: https://github.com/SublimeLinter/SublimeLinter\n"
+					},
+					"AQAAAAAAAAAAAAAAdgUAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					32,
+					1,
+					"package_control_message",
+					{
+						"message": "\n\nSublimeLinter-contrib-csstree\n-----------------------------\n\n  SublimeLinter-contrib-csstree\n  -------------------------------\n  This linter plugin for SublimeLinter provides an interface to csstree-validator.\n  \n  ** IMPORTANT! **\n  \n  Before this plugin will activate, you *must*\n  follow the installation instructions here:\n  \n  https://github.com/csstree/SublimeLinter-contrib-csstree\n"
+					},
+					"AQAAAHYFAAAAAAAA/QYAAAAAAAAAAAAA",
+					"AwAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAJwBAAAAAAAAnAEAAAAAAAAAAAAAAADwvw"
+				]
+			]
+		},
+		{
+			"file": "post-editor.html",
+			"settings":
+			{
+				"buffer_size": 3166,
+				"encoding": "UTF-8",
+				"line_ending": "Windows"
+			},
+			"undo_stack":
+			[
+				[
+					10,
+					1,
+					"left_delete",
+					null,
+					"AQAAAH4EAAAAAAAAfgQAAAAAAAABAAAAKA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAH8EAAAAAAAAfwQAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					11,
+					1,
+					"insert",
+					{
+						"characters": "{"
+					},
+					"AQAAAH4EAAAAAAAAfwQAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAH4EAAAAAAAAfgQAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					30,
+					1,
+					"left_delete",
+					null,
+					"AQAAAE0EAAAAAAAATQQAAAAAAAABAAAAIA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAE4EAAAAAAAATgQAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					33,
+					1,
+					"left_delete",
+					null,
+					"AQAAAE0EAAAAAAAATQQAAAAAAAABAAAAYg",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAE4EAAAAAAAATgQAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					35,
+					1,
+					"insert",
+					{
+						"characters": " b"
+					},
+					"AgAAAE0EAAAAAAAATgQAAAAAAAAAAAAATgQAAAAAAABPBAAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAE0EAAAAAAAATQQAAAAAAAAAAAAAAADwvw"
+				],
+				[
+					49,
+					1,
+					"insert",
+					{
+						"characters": "df"
+					},
+					"AgAAAI4EAAAAAAAAjwQAAAAAAAAAAAAAjwQAAAAAAACQBAAAAAAAAAAAAAA",
+					"BgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAI4EAAAAAAAAjgQAAAAAAAAAAAAAAADwvw"
+				]
+			]
+		},
+		{
+			"file": "style.css",
+			"settings":
+			{
+				"buffer_size": 3040,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			},
+			"undo_stack":
+			[
+				[
+					9,
+					1,
+					"left_delete",
+					null,
+					"AQAAAGQIAAAAAAAAZAgAAAAAAAABAAAAMA",
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABlCAAAAAAAAGUIAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					18,
+					1,
+					"stylefmt",
+					null,
+					"AQAAAAAAAAAAAAAAKQoAAAAAAABpCgAALyoKQGZvbnQtZmFjZSB7CiAgICBmb250LWZhbWlseTogUGFweXJ1czsgCiAgICBzcmM6IHVybCgvZm9udHMvZGlzcGxheS9wYXB5cnVzL3BhcHlydXMudHRmKSBmb3JtYXQoInRydWV0eXBlIik7Cn0KIEBmb250LWZhY2UgewogICAgZm9udC1mYW1pbHk6IFZlcmRhbmE7IAogICAgc3JjOiB1cmwoL2ZvbnRzL3RleHQvdmVyZGFuYS92ZXJkYW5hLnR0ZikgZm9ybWF0KCJ0cnVldHlwZSIpOwp9CkBmb250LWZhY2UgewogICAgZm9udC1mYW1pbHk6ICJOb3RvLUVtb2ppIjsKICAgIHNyYzogdXJsKC9mb250cy9vdGhlci9ub3RvLWVtb2ppL25vdG8tZW1vamkudHRmKSBmb3JtYXQoInRydWV0eXBlIik7CiAgICB1bmljb2RlLXJhbmdlOiBVKzFGMDAwLTFGRkZGLCBVKzI2MDAtMjZGRiwgVSsyNzAwLTI3RkY7Cn0KCmJvZHl7CiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBoc2woOTAsIDEzJSwgNzQlKTsKICAgIGZvbnQtZmFtaWx5OiAiVmVyZGFuYSIsICJIZWx2ZXRpY2EiLCBzYW5zLXNlcmlmOwp9CmgxIHsKICAgIHBhZGRpbmctdG9wOiAxNXB4IDsKICAgIHBhZGRpbmctbGVmdDogMTBweAp9CmgyewogICAgZm9udC13ZWlnaHQ6IE5vcm1hbCA7CiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7CiAgICBtYXJnaW4tdG9wOiAwLjRyZW07CiAgICBtYXJnaW4tYm90dG9tOiAwOwogICAgcGFkZGluZy1yaWdodDogMWNoOwoKCn0KaDR7CiAgICBtYXJnaW4tdG9wOiA0cHg7CiAgICBmb250LXdlaWdodDogTm9ybWFsIDsKICAgIGZvbnQtc2l6ZTogOTAlOwoKfQphIHsKICAgIHRleHQtZGVjb3JhdGlvbjogbm9uZTsKICAgIGNvbG9yOiBoc2woOTkuNDMsIDUyLjI0JSwgNDAuMjclKQogIH0KICAKCi5zdWJ0aXRsZSB7CiAgICB0ZXh0LWFsaWduOnJpZ2h0IDsKICAgIG1hcmdpbi1ib3R0b206IDAKfQoKYXJ0aWNsZSB7CiAgICBtYXJnaW4tYm90dG9tOjYwcHg7CiAgICBtYXJnaW4tdG9wOjMwcHg7CiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBoc2woOTAsIDEzJSwgODAlKTsKICAgIHBhZGRpbmc6IG1pbigyNXB4LDN2dykKfQoKLmljb24gewogICAgZm9udC1mYW1pbHk6ICJOb3RvLUVtb2ppIiAhaW1wb3J0YW50OwogICAgfQoKCiNiYW5uZXJ7CiAgICBmb250LWZhbWlseTogIlBhcHlydXMiLCAiVGltZXMgTmV3IFJvbWFuIiwgc2VyaWY7CiAgICBwYWRkaW5nLWxlZnQ6IDVweDsKICAgIG1hcmdpbjogNXB4OwogICAgdGV4dC1hbGlnbjogbGVmdAp9CiNwb3N0cyB7CiAgICBjb2xvcjogaHNsKDgwLCA4MCUsIDEyJSk7CiAgICBtYXgtd2lkdGg6IDU1MHB4OwogICAgbWFyZ2luOmF1dG87Cn0KI25vdGVzIHsKICAgIGZvbnQtc2l6ZTogODAlOwogICAgcGFkZGluZzogMjBweAp9CiN2aWxsYWdlLWxpbmtzIHsKICAgIHRleHQtYWxpZ246IHJpZ2h0OwogIH0KCgoqLwoKCgpAZm9udC1mYWNlIHsKICAgIGZvbnQtZmFtaWx5OiBQYXB5cnVzOyAKICAgIHNyYzogdXJsKC9mb250cy9kaXNwbGF5L3BhcHlydXMvcGFweXJ1cy50dGYpIGZvcm1hdCgidHJ1ZXR5cGUiKTsKfQogQGZvbnQtZmFjZSB7CiAgICBmb250LWZhbWlseTogVmVyZGFuYTsKICAgIHNyYzogdXJsKC9mb250cy90ZXh0L3ZlcmRhbmEvdmVyZGFuYS50dGYpIGZvcm1hdCgidHJ1ZXR5cGUiKTsKfQoKYm9keXsKICAgIGJhY2tncm91bmQtY29sb3I6IGhzbCg5MCwgMTMlLCA3NCUpOwogICAgZm9udC1mYW1pbHk6ICJWZXJkYW5hIiwgIkhlbHZldGljYSIsIHNhbnMtc2VyaWY7Cn0KYSB7CiAgICB0ZXh0LWRlY29yYXRpb246IG5vbmU7CiAgICBjb2xvcjogaHNsKDk5LjQzLCA1Mi4yNCUsIDQwLjI3JSkKICB9CmgxIHsKICAgIHBhZGRpbmctdG9wOiAxNXB4IDsKICAgIHBhZGRpbmctbGVmdDogMTBweAp9CmgyIHsKICAgIGZvbnQtd2VpZ2h0OiBOb3JtYWw7CiAgICBkaXNwbGF5OiBpbmxpbmU7CiAgICBtYXJnaW4tcmlnaHQ6IDEuM2NoCn0KaDR7CiAgICBtYXJnaW4tdG9wOiA0cHg7CiAgICBmb250LXdlaWdodDogTm9ybWFsIDsKICAgIGZvbnQtc2l6ZTogOTAlOwp9CgoKYXJ0aWNsZSB7CiAgICBtYXJnaW4tYm90dG9tOjYwcHg7CiAgICBtYXJnaW4tdG9wOjMwcHg7CiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBoc2woOTAsIDEzJSwgODAlKTsKICAgIHBhZGRpbmc6IG1pbigyNXB4LDN2dykKfQoKCiNwb3N0cyB7CiAgICBjb2xvcjogaHNsKDgwLCA4JSwgMTIlKTsKICAgIG1heC13aWR0aDogNTkwcHg7CiAgICBtYXJnaW46YXV0bzsKfQoKCi5UZXh0ewogICAgbGluZS1oZWlnaHQ6IDE4MCU7CiAgICBtYXJnaW4tYm90dG9tOiAxMHB4OwogICAgbWFyZ2luLWJvdHRvbTogMC44bGg7CiAgICBwYWRkaW5nLWxlZnQ6IDVweDsKICAgIHBhZGRpbmctbGVmdDogbWluKDVweCwgMS41dncpOwogICAgcGFkZGluZy1yaWdodDo1cHg7CiAgICBwYWRkaW5nLXJpZ2h0OiBtaW4oNXB4LCAxdncpCn0KCi5UaXRsZTplbXB0eSB+IGRpdi5UZXh0IHsKICAgIG1hcmdpbi1sZWZ0OiAzMHB4OwogICAgbWFyZ2luLWxlZnQ6IG1pbigzMHB4LCAzLjV2dyk7IAogICAgbWFyZ2luLXJpZ2h0OiAxNXB4OwogICAgbWFyZ2luLXJpZ2h0OiBtaW4oMTVweCwgMi41dncpCn0KCgoKLnN1YnRpdGxlIHsKICAgIHRleHQtYWxpZ246cmlnaHQgOwogICAgbWFyZ2luLWJvdHRvbTogMAp9CgoKLyoKLnJlYWRsZXNzLWJ1dHRvbi1zdGFydCB7IAogICAgcG9zaXRpb246YWJzb2x1dGUKICAgIH0qLw",
+					"BQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA8L8AAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAADwvwAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAABcCAAAAAAAAFwIAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					11,
+					1,
+					"overwrite",
+					{
+						"characters": "dfg"
+					},
+					"AwAAAH8CAAAAAAAAgAIAAAAAAAAAAAAAgAIAAAAAAACBAgAAAAAAAAAAAACBAgAAAAAAAIICAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAB/AgAAAAAAAH8CAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					13,
+					1,
+					"insert",
+					{
+						"characters": "dfgdfg"
+					},
+					"BgAAAIICAAAAAAAAgwIAAAAAAAAAAAAAgwIAAAAAAACEAgAAAAAAAAAAAACEAgAAAAAAAIUCAAAAAAAAAAAAAIUCAAAAAAAAhgIAAAAAAAAAAAAAhgIAAAAAAACHAgAAAAAAAAAAAACHAgAAAAAAAIgCAAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACCAgAAAAAAAIICAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					15,
+					10,
+					"left_delete",
+					null,
+					"CgAAAIcCAAAAAAAAhwIAAAAAAAABAAAAZ4YCAAAAAAAAhgIAAAAAAAABAAAAZoUCAAAAAAAAhQIAAAAAAAABAAAAZIQCAAAAAAAAhAIAAAAAAAABAAAAZ4MCAAAAAAAAgwIAAAAAAAABAAAAZoICAAAAAAAAggIAAAAAAAABAAAAZIECAAAAAAAAgQIAAAAAAAABAAAAZ4ACAAAAAAAAgAIAAAAAAAABAAAAZn8CAAAAAAAAfwIAAAAAAAABAAAAZH4CAAAAAAAAfgIAAAAAAAABAAAAOw",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACIAgAAAAAAAIgCAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					16,
+					1,
+					"overwrite",
+					{
+						"characters": ";"
+					},
+					"AQAAAH4CAAAAAAAAfwIAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAB+AgAAAAAAAH4CAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					19,
+					1,
+					"overwrite",
+					{
+						"characters": "dfsfs"
+					},
+					"BQAAAH8CAAAAAAAAgAIAAAAAAAAAAAAAgAIAAAAAAACBAgAAAAAAAAAAAACBAgAAAAAAAIICAAAAAAAAAAAAAIICAAAAAAAAgwIAAAAAAAAAAAAAgwIAAAAAAACEAgAAAAAAAAAAAAA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAAB/AgAAAAAAAH8CAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					21,
+					5,
+					"left_delete",
+					null,
+					"BQAAAIMCAAAAAAAAgwIAAAAAAAABAAAAc4ICAAAAAAAAggIAAAAAAAABAAAAZoECAAAAAAAAgQIAAAAAAAABAAAAc4ACAAAAAAAAgAIAAAAAAAABAAAAZn8CAAAAAAAAfwIAAAAAAAABAAAAZA",
+					"AgAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/AAAAAAEAAACEAgAAAAAAAIQCAAAAAAAAAAAAAAAA8L8"
+				],
+				[
+					1,
+					1,
+					"insert",
+					{
+						"characters": "s"
+					},
+					"AQAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA",
+					"AQAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPC/"
+				],
+				[
+					2,
+					1,
+					"left_delete",
+					null,
+					"AQAAAAAAAAAAAAAAAAAAAAAAAAABAAAAcw",
+					"AQAAAAAAAAABAAAAAQAAAAAAAAABAAAAAAAAAAAAAAAAAPC/"
+				]
+			]
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"prefere",
+				"Preferences: Settings"
+			],
+			[
+				"package",
+				"Package Control: Remove Package"
+			],
+			[
+				"pack in",
+				"Package Control: Install Package"
+			],
+			[
+				"pack repo add",
+				"Package Control: Add Repository"
+			],
+			[
+				"package int",
+				"Package Control: Install Package"
+			],
+			[
+				"pack ins",
+				"Package Control: Install Package"
+			],
+			[
+				"package repo",
+				"Package Control: Add Repository"
+			],
+			[
+				"packa in",
+				"Package Control: Install Package"
+			],
+			[
+				"package ontrol",
+				"Package Control: Upgrade All Packages"
+			],
+			[
+				"list pa",
+				"Package Control: List Packages"
+			],
+			[
+				"enable oaack",
+				"Package Control: Enable Package"
+			],
+			[
+				"package satisfy",
+				"Package Control: Satisfy Libraries"
+			],
+			[
+				"styl",
+				"Run Stylefmt"
+			],
+			[
+				"style",
+				"Run Stylefmt"
+			],
+			[
+				"lsp-c",
+				"Preferences: LSP-css Settings"
+			],
+			[
+				"lsp nable ln",
+				"LSP: Enable Language Server Globally"
+			],
+			[
+				"pack eng",
+				"Package Control: Enable Package"
+			],
+			[
+				"remp",
+				"Package Control: Remove Package"
+			],
+			[
+				"remove",
+				"Package Control: Remove Package"
+			],
+			[
+				"lsp",
+				"Preferences: LSP-html Settings"
+			],
+			[
+				"packa",
+				"Package Control: Remove Package"
+			],
+			[
+				"list packages",
+				"Package Control: List Packages"
+			],
+			[
+				"sublime",
+				"Preferences: SublimeLinter Settings"
+			],
+			[
+				"enable",
+				"Package Control: Enable Package"
+			],
+			[
+				"package contr",
+				"Package Control: Install Package"
+			],
+			[
+				"pa",
+				"Package Control: Install Package"
+			],
+			[
+				"bracket",
+				"BracketHighlighter: Toggle Global Enable"
+			],
+			[
+				"setting",
+				"Set Syntax: Git Config"
+			],
+			[
+				"",
+				"Convert Case: snake_case"
+			],
+			[
+				"markdown syn",
+				"Set Syntax: Markdown"
+			],
+			[
+				"markdonw syn",
+				"Set Syntax: MultiMarkdown"
+			],
+			[
+				"syntax mar",
+				"Set Syntax: Markdown (Go)"
+			],
+			[
+				"reind",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"settings",
+				"Preferences: Settings"
+			],
+			[
+				"preferences",
+				"Preferences: Settings"
+			],
+			[
+				"keybin",
+				"Preferences: Key Bindings"
+			],
+			[
+				"emoji",
+				"Emoji: Insert Emoji"
+			],
+			[
+				"package ins",
+				"Package Control: Install Package"
+			],
+			[
+				"ui ",
+				"UI: Customize Theme"
+			],
+			[
+				"color",
+				"UI: Select Color Scheme"
+			],
+			[
+				"markdown",
+				"Set Syntax: Markdown (Go)"
+			],
+			[
+				"marown ext",
+				"Set Syntax: Markdown"
+			],
+			[
+				"color scheme",
+				"UI: Select Color Scheme"
+			],
+			[
+				"theme",
+				"UI: Select Theme"
+			],
+			[
+				"synatx spe",
+				"Set Syntax: Java Properties"
+			],
+			[
+				"rein",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"reinde",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"indent",
+				"Indentation: Reindent Lines"
+			],
+			[
+				"beauti",
+				"HTMLBeautify"
+			],
+			[
+				"breacket",
+				"BracketHighlighter: Remove Brackets"
+			],
+			[
+				"key",
+				"Preferences: Key Bindings"
+			],
+			[
+				"sttings",
+				"Preferences: Settings"
+			],
+			[
+				"prefe",
+				"Preferences: Settings"
+			],
+			[
+				"color sch",
+				"UI: Customize Color Scheme"
+			],
+			[
+				"pack",
+				"Package Control: List Packages"
+			],
+			[
+				"color schm",
+				"UI: Select Color Scheme"
+			],
+			[
+				"color sche",
+				"UI: Select Color Scheme"
+			],
+			[
+				"pref",
+				"Preferences: Settings"
+			],
+			[
+				"bracket ",
+				"BracketHighlighter: Settings"
+			],
+			[
+				"keyb",
+				"Preferences: Key Bindings"
+			],
+			[
+				"terminus",
+				"Preferences: Terminus Key Bindings"
+			],
+			[
+				"terminus ",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"terminal ",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"terminal in ",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"terminu",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"terminus d",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"terminus def",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"termi",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"teminus key",
+				"Preferences: Terminus Key Bindings"
+			],
+			[
+				"term",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"termina",
+				"Terminus: Open Default Shell in Tab (View)"
+			],
+			[
+				"terminus sett",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"terminus setting",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"termin",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"terminus se",
+				"Preferences: Terminus Settings"
+			],
+			[
+				"emo",
+				"Emoji: Insert Emoji"
+			],
+			[
+				"emoij",
+				"Emoji: Insert Emoji"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"pakc",
+				"Package Control: Install Package"
+			],
+			[
+				"view mi",
+				"View: Toggle Minimap"
+			],
+			[
+				"word c",
+				"View: Toggle Distraction Free"
+			],
+			[
+				"th",
+				"Terminus Utilities: Select Theme"
+			],
+			[
+				"terminal",
+				"Terminus: Toggle Panel"
+			],
+			[
+				"UI THEME",
+				"UI: Select Theme"
+			],
+			[
+				"cutomise",
+				"UI: Customize Color Scheme"
+			],
+			[
+				"terminus ope",
+				"Terminus: Open Default Shell in Panel"
+			],
+			[
+				"package control remove pack",
+				"Package Control: Remove Package"
+			],
+			[
+				"package control en",
+				"Package Control: Enable Package"
+			]
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 253.0,
+		"history":
+		[
+			"view.settings().get(\"font_face\")",
+			"julia"
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/Gal/web/neocities-pimkossible"
+	],
+	"file_history":
+	[
+		"/C/Users/Gal/web/neocities-pimkossible/content-edible.sublime-project",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/User/LSP-html.sublime-settings",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/LSP-html/LSP-html.sublime-settings",
+		"/C/Users/Gal/web/neocities-pimkossible/post-editor.html",
+		"/C/Users/Gal/web/neocities-pimkossible/index.html",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/User/LSP.sublime-settings",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/LSP/LSP.sublime-settings",
+		"/C/Users/Gal/web/neocities-pimkossible/Ideas.md",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/SublimeLinter-inline-errors/SublimeLinterInlineErrors.sublime-settings",
+		"/C/Users/Gal/dotfiles/AutoHotkey/mine.ahk",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/Default/Preferences.sublime-settings",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/User/Preferences.sublime-settings",
+		"/C/Users/Gal/Documents/AutoHotkey/mine.ahk",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/User/AutoHotkey.sublime-build",
+		"/C/Users/Gal/web/neocities-pimkossible/blog.html",
+		"/C/Users/Gal/web/neocities-pimkossible/style.css",
+		"/C/Users/Gal/web/neocities-pimkossible/script.js",
+		"/C/Users/Gal/Documents/AutoHotkey/RefreshZen.ahk",
+		"/C/Users/Gal/web/neocities-pimkossible/foundation-onscrre.html",
+		"/C/Users/Gal/web/neocities-pimkossible/foundation.html",
+		"/C/Users/Gal/Documents/AutoHotkey/RefreshFirefox.ahk",
+		"/C/Users/Gal/web/neocities-pimkossible/post-foundation.html",
+		"/C/Users/Gal/web/neocities-pimkossible/fonts/readme.txt",
+		"/C/Users/Gal/web/pim-dictionary/scrape good parts.html",
+		"/C/Users/Gal/web/neocities-pimkossible/fonts/verdana-font-family/Verdana-Pro-SemiBold.ttf",
+		"/C/Users/Gal/.julia/config/startup.jl",
+		"/C/Users/Gal/julia/gui/test.jl",
+		"/C/Users/Gal/julia/thinkjulia exercises/8.jl",
+		"/C/Users/Gal/web/pimkossible/blog.html",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/Gruvbox Dark/gruvbox.tmTheme",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/User/gruvbox.sublime-color-scheme",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/User/Terminus.sublime-settings",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/Terminus/Terminus.sublime-settings",
+		"/C/Users/Gal/julia/thinkjulia exercises/7.jl",
+		"/C/Users/Gal/julia/other/helloworld.qml",
+		"/C/Users/Gal/julia/goofing/test.jl",
+		"/C/Users/Gal/julia/goofing/cool-things-i've-done.jl",
+		"/C/Users/Gal/julia/kata.jl",
+		"/C/Users/Gal/julia/5.jl",
+		"/C/Users/Gal/julia/6.jl",
+		"/C/Users/Gal/julia/excercise4.jl",
+		"/C/Users/Gal/julia/exercise5.jl",
+		"/C/Users/Gal/Documents/AutoHotkey/triggerjulia.ahk",
+		"/C/Users/Gal/julia/QmlJuliaExamples/plots/qml/repl-background.qml",
+		"/C/Users/Gal/julia/test.qml",
+		"/C/Users/Gal/julia/QmlJuliaExamples/basic/qml/basicclock.qml",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/User/Default (Windows).sublime-keymap",
+		"/C/Users/Gal/julia/test.jl",
+		"/C/Users/Gal/julia/QmlJuliaExamples/plots/repl-background.jl",
+		"/C/Users/Gal/julia/QmlJuliaExamples/basic/gui.jl",
+		"/C/Users/Gal/julia/QmlJuliaExamples/basic/basicclock.jl",
+		"/C/Users/Gal/julia/playground.jl",
+		"/C/Users/Gal/julia/ThinkJuliaTurtles.jl",
+		"/C/Users/Gal/julia/other/open.jl",
+		"/C/Users/Gal/julia/QmlJuliaExamples/basic/qml/gui.qml",
+		"/C/Users/Gal/julia/ball.qml",
+		"/C/Users/Gal/QmlJuliaExamples/basic/qml/basicclock.qml",
+		"/C/Users/Gal/julia/ball.jl",
+		"/C/Users/Gal/QmlJuliaExamples/basic/gui.jl",
+		"/C/Users/Gal/QmlJuliaExamples/basic/basicclock.jl",
+		"/C/Users/Gal/QmlJuliaExamples/basic/qml/canvas.qml",
+		"/C/Users/Gal/QmlJuliaExamples/basic/colors.jl",
+		"/C/Users/Gal/QmlJuliaExamples/basic/qml/tutorial.qml",
+		"/C/Users/Gal/QmlJuliaExamples/basic/canvas.jl",
+		"/C/Users/Gal/julia/cool-things-i've-done.jl",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/Terminus/Default.sublime-keymap",
+		"/C/Users/Gal/AppData/Roaming/Sublime Text/Packages/Default/Default (Windows).sublime-keymap"
+	],
+	"find":
+	{
+		"height": 33.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": true,
+		"find_history":
+		[
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+		],
+		"reverse": false,
+		"scrollbar_highlights": true,
+		"show_context": true,
+		"use_buffer2": true,
+		"use_gitignore": true,
+		"whole_word": false,
+		"wrap": false
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1789,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								412,
+								412
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"auto_indent": false,
+							"gutter": false,
+							"lsp_uri": "buffer:49",
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 2,
+							"tab_width": 2,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "post-editor.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3166,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": ".:<\"=/",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-html"
+								}
+							],
+							"bracket_highlighter.busy": false,
+							"bracket_highlighter.locations":
+							{
+								"close":
+								{
+								},
+								"icon":
+								{
+								},
+								"open":
+								{
+								},
+								"unmatched":
+								{
+								}
+							},
+							"bracket_highlighter.regions":
+							[
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_angle_content",
+								"bh_c_define",
+								"bh_c_define_center",
+								"bh_c_define_open",
+								"bh_c_define_close",
+								"bh_c_define_content",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_curly_content",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_default_content",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_double_quote_content",
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_regex_content",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_round_content",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close",
+								"bh_single_quote_content",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_square_content",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_tag_content",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_unmatched_content"
+							],
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/Gal/web/neocities-pimkossible/post-editor.html",
+							"show_definitions": false,
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 3,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1017.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"stack_multiselect": false,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "style.css",
+					"selected": true,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3040,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								494,
+								494
+							]
+						],
+						"settings":
+						{
+							"auto_complete_triggers":
+							[
+								{
+									"characters": "<",
+									"selector": "text.html, text.xml"
+								},
+								{
+									"rhs_empty": true,
+									"selector": "punctuation.accessor"
+								},
+								{
+									"characters": "/-:",
+									"selector": "meta.tag, source - comment - string.quoted.double.block - string.quoted.single.block - string.unquoted.heredoc",
+									"server": "LSP-css"
+								}
+							],
+							"lsp_active": true,
+							"lsp_uri": "file:///C:/Users/Gal/web/neocities-pimkossible/style.css",
+							"show_definitions": false,
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"stack_multiselect": false,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 33.0
+	},
+	"input":
+	{
+		"height": 99.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.LSP Log Panel":
+	{
+		"height": 351.0,
+		"history":
+		[
+		]
+	},
+	"output.SublimeLinter":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.SublimeLinter Messages":
+	{
+		"height": 551.0,
+		"history":
+		[
+		]
+	},
+	"output.Terminus":
+	{
+		"height": 559.0,
+		"history":
+		[
+		]
+	},
+	"output.Terminus 2":
+	{
+		"height": 144.0,
+		"history":
+		[
+		]
+	},
+	"output.diagnostics":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.exec":
+	{
+		"height": 155.199996948,
+		"history":
+		[
+		]
+	},
+	"output.find_results":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"output.mdpopups":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"pinned_build_system": "",
+	"project": "content-edible.sublime-project",
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"editor",
+				"post-editor.html"
+			],
+			[
+				"edit",
+				"post-editor.html"
+			],
+			[
+				"7.",
+				"thinkjulia exercises\\7.jl"
+			],
+			[
+				"8.",
+				"thinkjulia exercises\\8.jl"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 499.8,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"C:\\Users\\Gal\\julia\\ThinkJulia.sublime-workspace"
+			]
+		],
+		"width": 379.6
+	},
+	"select_symbol":
+	{
+		"height": 323.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 592.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+		"lsp_show_inlay_hints": false
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 154.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

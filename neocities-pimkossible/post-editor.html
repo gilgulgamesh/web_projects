@@ -30,22 +30,14 @@
       /*font-weight: bold;*/
       font-size: 133%;
       line-height: 0.5;
-      padding-right: 0.2ch;
+      padding-right: 0.1ch;
       padding-left: 0.2ch;
 
       font-family: "JuliaMono-extrabold";
    }
 
-   .source-code {
-      /*font-family: "menlo" !important;*/
-      white-space: pre-wrap;
-      /*color: black;*/
-      transition: 4s;
-   }
-   .source-code:hover {
-      /*color: transparent*/
 
-   }
+   
 
    [contenteditable] {
       background-color: var(--faded-green);
@@ -53,7 +45,7 @@
       white-space: normal;
       min-width: 30ch;
       hyphens: auto;
-      /*color: black;*/
+      color: rgba(0, 0, 0, 0.7);
       margin: 0 4px;
       padding: 1px 4px;
       /*font-family: "JuliaMono";*/
@@ -72,10 +64,10 @@
       color: var(--faded-green);
    }
 
+
    #Title-field:empty::before {
       content: "(optional)";
       white-space: pre-wrap;
-
    }
 
    #Content-field {
@@ -84,39 +76,57 @@
       margin-left: 6ch;
       color: rgba(0, 0, 0, 0.75);
       margin-top: 0.5ch;
-
    }
    #Content-field:focus {
       padding: 0.5ch;
       margin: 0ch;
-      margin-left: 6ch
-
+      margin-left: 5.9ch;
+      margin-top: 0.1ch
    }
    #Content-field:empty::before {
    /*font-family:  "JuliaMono";*/
    content: "Type here! I'm a normal textbox ! (nothing more)" ;
-
-
       }
    
    
    h1, label, input {
       user-select: none;
+      color:rgba(0, 0, 0, 0.75)
    }
    
-      #header-footer-checkbox:not(:checked) ~ #header-code,
-   #header-footer-checkbox:not(:checked) ~ #footer-code {
+      #header-footer-checkbox:checked ~ #header-code,
+   #header-footer-checkbox:checked ~ #footer-code {
+      color: rgba(0, 0, 0, 0.75)
+   }
+         #header-footer-checkbox ~ #header-code,
+   #header-footer-checkbox ~ #footer-code {
       user-select: none;
    }
    
-   #select-all-checkbox:checked ~#source-container {
-      user-select: all
+   #select-all-checkbox:checked ~ #code-container {
+      user-select: all; 
    }
 
    ::selection {
-  background: rgb(248, 248, 248);
+  background: rgba(255, 255, 255, 0.81);
+      color:rgba(0, 0, 0, 0.75)
 }
-   
+  
+   body:hover #body-code{
+      color: rgba(0, 0, 0, 0.4)
+   }
+    #body-code:has(.edible:focus){
+      color: transparent 
+   }
+   .code {
+      /*font-family: "menlo" !important;*/
+      white-space: pre-wrap;
+      /*color: black;*/
+      transition: 2s;
+   }
+   #code-container:hover {
+      color: transparent
+   }
 </style>
 </head>  
 <body>
@@ -128,14 +138,14 @@
    
 <input type="checkbox" id="select-all-checkbox" name="select-all-checkbox" value="Bike">
 <label for="select-all-checkbox">one tap select mode</label><br>
-<section id=source-container>   
+<section id=code-container>   
 <input type="checkbox" id="header-footer-checkbox" name="header-footer-checkbox" value="Bike">
 <label for="header-footer-checkbox">header/footer selectabe</label>
 
   
    
   
-<div class="source-code" id=header-code>&lt;!DOCTYPE html&gt;
+<div class="code" id=header-code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
 &lt;head&gt;
 
@@ -152,22 +162,22 @@
 &lt;body&gt;  
 
 &lt;section id=posts&gt;
-</div><div class="source-code" id=body-code>
+</div><div class="code" id=body-code>
 
    &lt;article class=post&gt;
          
         
-         &lt;h2 class=<b>Title</b>&gt;<div contenteditable=true id="Title-field"></div>&lt;/h2&gt; 
+         &lt;h2 class=<b>Title</b>&gt;<div class=edible contenteditable=true id="Title-field"></div>&lt;/h2&gt; 
          &lt;h4 class=subtitle&gt;
 
-            &lt;span class=<b>User</b>&gt;<span contenteditable=true id="User-field"></span>&lt;/span&gt;
+            &lt;span class=<b>User</b>&gt;<span class=edible contenteditable=true id="User-field"></span>&lt;/span&gt;
             &lt;span class=date&gt; $day-$month-$year&lt;/span&gt;
          &lt;/h4&gt;
-    &lt;div class=<b>Content</b>&gt;<div contenteditable=true id="Content-field"></div><br>&lt;/div&gt;
+    &lt;div class=<b>Content</b>&gt;<div class=edible contenteditable=true id="Content-field"></div><br>&lt;/div&gt;
 
    &lt;/article&gt;    
 
- </div><div class="source-code" id=footer-code>  &lt;/section&gt;
+ </div><div class="code" id=footer-code>  &lt;/section&gt;
 &lt;/body&gt;
 &lt;/html&gt;
 

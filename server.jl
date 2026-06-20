@@ -11,7 +11,7 @@ assume js transcodes everything correctly. use json with name title and content
 content = ""
 
 router = Router()
-route!(router, :post, "/", req -> begin
+route!(router, :post, "/", req -> begins
     global content
     content = req.body
     if content == "I'm valid"

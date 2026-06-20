@@ -1,130 +1,110 @@
-
 @font-face {
-    font-family: "noto-emoji";
-    src: url(fonts/other/noto-emoji/noto-emoji.ttf) format("truetype");
-    unicode-range: U+1F000-1FFFF, U+2600-26FF, U+2700-27FF;
+   font-family: "noto-emoji";
+   src: url(fonts/other/noto-emoji/noto-emoji.ttf) format("truetype");
+   unicode-range: U+1F000-1FFFF, U+2600-26FF, U+2700-27FF;
 }
 
 @font-face {
-  font-family: Papyrus;
-  src: url(fonts/display/papyrus/papyrus.ttf) format("truetype");
+   font-family: Papyrus;
+   src: url(fonts/display/papyrus/papyrus.ttf) format("truetype");
 }
 
 @font-face {
-  font-family: Verdana;
-  src: url(fonts/text/verdana/verdana.ttf) format("truetype");
+   font-family: Verdana;
+   src: url(fonts/text/verdana/verdana.ttf) format("truetype");
 }
 
-/*deccide which of thse to use lol*/
-/*
-@font-face {
-    font-family: "menlo";
-    src: url(fonts/Menlo-Regular.ttf) format("truetype");
-}
-@font-face {
-    font-family: "miriam---bold";
-    src: url(fonts/text/miriam-mono-clm/miriam-mono-clm---bold.ttf);
-}
-@font-face {
-    font-family: "miriam";
-    src: url(fonts/text/miriam-mono-clm/miriam-mono-clm.ttf);
-}
-@font-face {
-    font-family: "verdana-mono";
-    src: url(fonts/menlo-regular.ttf);
-    */
-    
- @font-face {
+/*@font-face {
     font-family: "juliamono";
     src: url(fonts/code/juliamono/juliamono-regular.ttf) format("truetype");
 }
-    
+
  @font-face {
     font-family: "JuliaMono-bold";
     src: url(fonts/code/juliamono/JuliaMono-Bold.ttf) format("truetype");
 }
-    
+
  @font-face {
     font-family: "JuliaMono-extrabold";
     src: url(fonts/code/juliamono/JuliaMono-extrabold.ttf) format("truetype");
-}
-    
-/*}*/
+}*/
+
+
 body {
-  background-color: hsl(90, 13%, 74%);
-  font-family: "Verdana", "Helvetica", sans-serif;
+   background-color: hsl(90, 13%, 74%);
+   font-family: "Verdana", "Helvetica", sans-serif;
 }
 
 a {
-  text-decoration: none;
-  color: hsl(99.43, 52.24%, 40.27%);
+   text-decoration: none;
+   color: hsl(99.43, 52.24%, 40.27%);
 }
 
 h1 {
-  padding-top: 15px;
-  padding-left: 10px;
+   padding-top: 15px;
+   padding-left: 10px;
 }
 
 h2 {
-  font-weight: Normal;
-  display: inline;
-  margin-right: 1.3ch;
+   font-weight: Normal;
+   display: inline;
+   margin-right: 1.3ch;
 }
 
 h4 {
-  margin-top: 4px;
-  font-weight: Normal;
-  font-size: 90%;
+   margin-top: 4px;
+   font-weight: Normal;
+   font-size: 90%;
 }
 
 article {
-  margin-bottom: 60px;
-  margin-top: 30px;
-  background-color: hsl(90, 13%, 80%);
-  padding: min(25px, 3vw);
+   margin-bottom: 60px;
+   margin-top: 30px;
+   background-color: hsl(90, 13%, 80%);
+   padding: min(25px, 3vw);
 }
 
 #posts {
-  color: hsl(80, 8%, 12%);
-  max-width: 590px;
-  margin: auto;
+   color: hsl(80, 8%, 12%);
+   max-width: 590px;
+   margin: auto;
 }
 
 .Text {
-  line-height: 180%;
-  margin-bottom: 10px;
-  margin-bottom: 0.8lh;
-  padding-left: 5px;
-  padding-left: min(5px, 1.5vw);
-  padding-right: 5px;
-  padding-right: min(5px, 1vw);
+   line-height: 180%;
+   margin-bottom: 10px;
+   margin-bottom: 0.8lh;
+   padding-left: 5px;
+   padding-left: min(5px, 1.5vw);
+   padding-right: 5px;
+   padding-right: min(5px, 1vw);
 }
 
-.Title:empty ~ div.Text {
-  margin-left: 30px;
-  margin-left: min(30px, 3.5vw);
-  margin-right: 15px;
-  margin-right: min(15px, 2.5vw);
+.Title:empty~div.Text {
+   margin-left: 30px;
+   margin-left: min(30px, 3.5vw);
+   margin-right: 15px;
+   margin-right: min(15px, 2.5vw);
 }
 
 .subtitle {
-  text-align: right;
-  margin-bottom: 0;
+   text-align: right;
+   margin-bottom: 0;
 }
 
 
 /*
-.readless-button-start { 
+.readless-button-start {
     position:absolute
     }*/
 
 /*
 @font-face {
-    font-family: Papyrus; 
+    font-family: Papyrus;
     src: url(/fonts/display/papyrus/papyrus.ttf) format("truetype");
 }
  @font-face {
-    font-family: Verdana; 
+    font-family: Verdana;
     src: url(/fonts/text/verdana/verdana.ttf) format("truetype");
 }
 
@@ -155,7 +135,7 @@ a {
     text-decoration: none;
     color: hsl(99.43, 52.24%, 40.27%)
   }
-  
+
 
 .subtitle {
     text-align:right ;
@@ -191,5 +171,4 @@ article {
 }
 #village-links {
     text-align: right;
-  }
-
+}

@@ -1,0 +1,111 @@
+
+        @font-face {
+            font-family: Papyrus; /* set name */
+            src: url(/fonts/display/papyrus/papyrus.ttf) format("truetype");
+        }
+         @font-face {
+            font-family: Verdana; /* set name */
+            src: url(/fonts/text/verdana/verdana.ttf) format("truetype");
+        }
+        @font-face {
+            font-family: "Noto-Emoji";
+            src: url(/fonts/other/noto-emoji/noto-emoji.ttf) format("truetype");
+            unicode-range: U+1F000-1FFFF, U+2600-26FF, U+2700-27FF;
+        }
+        
+        body{
+            background-color: hsl(90, 13%, 74%);
+            font-family: "Verdana", "Helvetica", sans-serif;
+        }
+        h1 {
+            padding-top: 15px ;
+            padding-left: 10px
+        }
+        h2{
+            font-weight: Normal ;
+            margin-top: 0.4rem;
+            margin-bottom: 0
+        }
+        h4{
+            margin-top: 4px;
+            font-weight: Normal ;
+            font-size: 90%;
+        }
+        h2 {
+  display: inline;
+}
+
+
+  h2.Title::empty ~ .Text {
+    padding-left: 10px;
+  }
+
+        a {
+            text-decoration: none;
+            color: hsl(99.43, 52.24%, 40.27%)
+          }
+          
+        
+        .Title .subtitle{
+            margin-top: 0
+            }
+        .subtitle {
+            text-align:right ;
+            margin-bottom: 0
+        }
+
+        .Content{
+          white-space: pre-wrap
+          
+        }
+        .post, .mini {
+            margin-bottom:60px;
+            margin-top:30px;
+            background-color: hsl(90, 13%, 80%);
+            padding: min(25px,3vw)
+        }
+        .post-text, .mini-text, 
+            line-height: 180%;
+            margin-bottom: 10px;
+            margin-bottom: 0.8lh;
+            padding-left: 5px;
+            padding-left: min(5px, 1.5vw);
+            padding-right:5px;
+            padding-right: min(5px, 1vw)
+        }
+        
+        
+        .mini-text {
+            margin-left: 30px;
+            margin-left: min(30px, 3.5vw); /* these are extra on TOP of the mini post ones */
+            margin-right: 15px;
+            margin-right: min(15px, 2.5vw)
+        }
+        .icon {
+            font-family: "Noto-Emoji" !important;
+            }
+        .readless-button-start { 
+            position:absolute
+            }
+
+        #banner{
+            font-family: "Papyrus", "Times New Roman", serif;
+            padding-left: 5px;
+            margin: 5px;
+            text-align: left
+        }
+        #posts {
+            color: hsl(80, 80%, 12%);
+            max-width: 630px;
+            margin:auto;
+        }
+        #notes {
+            bottom: 0;
+            font-size: 80%;
+            padding: 20px
+        }
+        #village-links {
+            text-align: right;
+          }
+        
+        

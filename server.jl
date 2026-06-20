@@ -7,7 +7,7 @@ req.body # can assig to a glloal variable
 
 assume js transcodes everything correctly. use json with name title and content
 
-dd
+
 """
 content = ""
 

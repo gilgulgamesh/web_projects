@@ -26,8 +26,27 @@ minimal version
 
 println(read(req.body, String))
 
+# get what's needed
+nextpost_text = read("package.txt", String) # will be req.body
+old_db_text = read("databas.txt", String)
+postdate = Dates.now()
 
-   """
+#back up
+backup_file = open("backup_" * string(postdate) * ".txt")
+write(backup, old_db_text)
+close(backup_file)
+
+# splice
+fout = open("database.txt", "w")
+write(fout, nextpost_text * "\n" * old_db_text)
+close(fout)
+
+
+"""
+
+
+
+
 post = ""
 
 router = Router()

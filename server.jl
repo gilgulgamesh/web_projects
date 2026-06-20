@@ -1,30 +1,44 @@
 using Mongoose
 
 """
-read("neocities-pimkossible\\index.html", String)
+# s() = shutdown!(server)
+# i() = include("server.jl")
+# si() = s();i();
 
-req.body # can assig to a glloal variable
+# if  req.body ==
+# else
+#     Response(Plain, "That don't")
+# end
 
-assume js transcodes everything correctly. use json with name title and content
 
 
-"""
-content = ""
+ js transcodes everything correctly. use json with name title and content
+ -- the whole html section.
+
+minimal version
+ -- just splices the htmls. i back up.
+ -- ok it saves each post too, and a copy of main
+
+ full version
+  -- json or xml? html?
+  -- git back up changes
+  -- database
+
+println(read(req.body, String))
+
+
+   """
+post = ""
 
 router = Router()
-route!(router, :post, "/", req -> begins
-    global content
-    content = req.body
-    if content == "I'm valid"
-        Response(Plain, "That works")
-    else
-        Response(Plain, "That don't")
-    end
+route!(router, :post, "/", req -> begin
+    global post
+    post = req.body
+
+    println(read(req.body, String))
+
+    Response(Plain, "That works")
 end)
 
 server = Async(router) #either Server or Async
 start!(server, port=8080, blocking=false) # blocking=false lets me use repl
-
-# s() = shutdown!(server)
-# i() = include("server.jl")
-# si() = s();i();

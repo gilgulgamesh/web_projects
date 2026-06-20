@@ -1,29 +1,5 @@
 # All my projects
-small
- [x] pomodoro digital
- [ ] kohinting
-
-medium
- [ ] analogue pomodoro
-
- big
- [ ] chaos equation
- [ ] website
- [ ] this thing, kanata transpiler
-```
-[numlock::held]
-capslock: { Python.custom_screensaver()}
-1 : 2
-```
-
-ready to share
-  [ ] maori keyboard (link on site too... and just this on reddit)
  
- back up
- [ ] keyboard
- [ ] testclock
- [ ] chaos equations
-
 
 
 names

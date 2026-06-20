@@ -1,15 +1,15 @@
 # All my projects
 small
-- [x] pomodoro digital
-- [ ] kohinting
+ [x] pomodoro digital
+ [ ] kohinting
 
 medium
-- [ ] analogue pomodoro
+ [ ] analogue pomodoro
 
  big
-- [ ] chaos equation
-- [ ] website
-- [ ] this thing, kanata transpiler
+ [ ] chaos equation
+ [ ] website
+ [ ] this thing, kanata transpiler
 ```
 [numlock::held]
 capslock: { Python.custom_screensaver()}
@@ -17,18 +17,18 @@ capslock: { Python.custom_screensaver()}
 ```
 
 ready to share
- - [ ] maori keyboard (link on site too... and just this on reddit)
+  [ ] maori keyboard (link on site too... and just this on reddit)
  
  back up
-- [ ] keyboard
-- [ ] testclock
-- [ ] chaos equations
+ [ ] keyboard
+ [ ] testclock
+ [ ] chaos equations
 
 
 
 names
-- a rose named sharon
-- a site with no name
+ a rose named sharon
+ a site with no name
 Now
 
 
@@ -81,5 +81,6 @@ You can simulate the following extended keys using the specified tags...
 what i want to do today
 
 
+__hi i am writing soething bold__
  [ ] css checkbox to hide top text.
  [ ] javascript select

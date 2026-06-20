@@ -1,0 +1,13 @@
+#4\n sent from curl
+
+#3
+ hi i am really awesome
+
+# 2
+I am another post
+
+# post 1
+i am a little potato
+
+
+hi im a database, add things above me

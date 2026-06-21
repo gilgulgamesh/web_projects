@@ -8,7 +8,18 @@
    <link href="../style.css" rel="stylesheet" type="text/css" media="all">
    <style type="text/css">
       .Content {
-         whitespace: pre-wrap
+         white-space: pre-wrap
+      }
+      input {
+         background-color: var(--faded-green);
+         border: 0px solid;
+         padding: 3px;
+         margin: 3px;
+      }
+      input:focus {
+         padding: 6px;
+         margin: 0px;
+         border: 0px solid;
       }
    </style>
 </head>
@@ -19,14 +30,6 @@
    </section>
 
    <section id=posts>
-
-      <article class=post>
-         <h2 class=Title>You can upload if you can't use the post editor</h2>
-         <h4></h4>
-         <div class=Content>Note, you can't get many fast live updates, because NC would rate limit me. Use a manual preview method, or be
-            content seeing changes in blocks of 1m if you update more often than that.
-         </div>
-      </article>
 
       <article class=post>
          <h2 class=Title>HTML Form</h2>
@@ -40,16 +43,26 @@
             <input type="text" id="User" name="User"><br>
             <label for="Content">Content:</label><br>
             <input type="text" id="Content" name="Content"><br><br>
-            <input type="submit" value="Submit">
+            <input style="background-color: var(--vivid-green);color: white;" type="submit" value="Submit"> <!-- hardbake these in lol it's for poor ppl -->
          </form>
       </article>
 
          <article class=post>
-            <h2 class=Title>Curl CLI</h2>
+            <h2 class=Title>Yes you can upload without the builder!</h2>
+            <h4></h4>
+            <div class=Content>Only wrinkle is that you can't get consecutive fast live updates, because NC would rate limit me. Use a manual preview method, or be content with re-submitting and watching your post change (or smn).
+
+   hopefully this helps someone without modern tech, or with a cool script
+            </div>
+         </article>
+
+         <article class=post>
+            <h2 class=Title>CLI</h2>
             <h4 class=subtitle>
                <span class=User></span>
             </h4>
-            <div class=Content> Smn like curl -d "this is my post" http://127.0.0.1:8080
+            <div class=Content>Yes you can send things without a browser too! For curl (pre-installed everywhere) the syntax is smn like
+               <pre  style=" padding-left: 2ch; white-space:pre-wrap"><span style="user-select: none">(on one line)> </span>curl -d 'Title=Hi &User=Me &Content=My post' pimkossible.hopto.org</pre>
             </div>
          </article>
 

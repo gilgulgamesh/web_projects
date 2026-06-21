@@ -11,9 +11,7 @@
     <style>
         :root {
             --vivid-green: hsl(99.43, 70%, 30%);
-            --faded-green: hsl(96, 26%, 73%)
-                /*hsla(99.43, 42%, 53%, 25%)*/
-            ;
+            --faded-green: hsl(96, 26%, 73%);
         }
 
         body {
@@ -87,15 +85,13 @@
             content: "Type here! I'm a normal textbox i promise!";
         }
 
-        h1,
-        labe0l,
-        input {
+        iframe, button, input, label{
             user-select: none;
             color: rgba(0, 0, 0, 0.75);
         }
 
         #header-footer-checkbox:checked~#header-code,
-        #header-footer-checkbox:checked~#footer-code {
+        #header-footer-checkbox:checked~#footer-code, {
             color: rgba(0, 0, 0, 0.75);
         }
 
@@ -176,16 +172,20 @@
         button:active {
             background-color: rgba(0, 0, 0, 0.07);
         }
+
+        button:after ~ #footer-code {
+           color:transparent
+        }
     </style>
 
 </head>
 
 <body>
-
-<noscript>
-    <input type="checkbox" id="select-all-checkbox" name="select-all-checkbox" value="Bike">
-    <label for="select-all-checkbox">one tap select mode</label><br>
     <div id=code-container>
+<noscript>
+         <input type="checkbox" id="select-all-checkbox" name="select-all-checkbox" value="Bike">
+         <label for="select-all-checkbox">one tap select mode</label><br>
+
         <input type="checkbox" id="header-footer-checkbox" name="header-footer-checkbox" value="Bike">
         <label for="header-footer-checkbox">header/footer selectabe</label>
 </noscript>
@@ -194,7 +194,7 @@
     Post editor
 </h1> "></iframe>
         </div><br><br>
-        <div class="code" id=header-code>&lt;!DOCTYPE html&gt;
+        <section class="code" id=header-code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
    &lt;head&gt;
       &lt;meta charset="UTF-8"&gt;
@@ -203,9 +203,9 @@
       &lt;link href="https://pimkossible.neocities.org/style.css" rel="stylesheet" type="text/css" media="all"&gt;
    &lt;/head&gt;
    &lt;body&gt;
-      &lt;section id=posts&gt;</div>
-<div class="code" id=body-code>         &lt;article class=post&gt;
-
+      &lt;section id=posts&gt;</section>
+<section class="code" id=body-code>
+         &lt;article class=post&gt;
             &lt;h2 class=<b>Title</b>&gt;<div class=edible contenteditable=true id="Title-field"></div>&lt;/h2&gt;
             &lt;h4 class=subtitle&gt;
                &lt;span class=<b>User</b>&gt;<span class=edible contenteditable=true id="User-field"></span>&lt;/span&gt;
@@ -214,9 +214,9 @@
             &lt;div class=<b>Content</b>&gt;<div onblur="ReplaceShit()" class=edible contenteditable=true
                   id="Content-field">
 
-</div>            &lt;/div&gt;
-
-         &lt;/article&gt;      <div class="code" id=footer-code>      &lt;/section&gt;
+</div>             &lt;/div&gt;
+         &lt;/article&gt;</section>     <section class="code" id=footer-code>
+      &lt;/section&gt;
    &lt;script&gt; <div id=buttons>
                     <button onclick="addBold()" type=button>&lt;b&gt;<span
                             style="font-weight: bold">bold</span>&lt;/b&gt;</button>
@@ -234,13 +234,14 @@
    <label for="vehicle1">Show Preview Frame</label><br>
    -->
 
-        </div>
-    </div>
+        </section>
+    </section>
 
 
 
 
     <script>
+
 // preview iframe
 function ReplaceShit() {
   var content = document.getElementById("Content-field").innerText;

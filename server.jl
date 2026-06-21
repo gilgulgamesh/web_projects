@@ -6,7 +6,7 @@ shutdown!(server)
 
 function addpost!(nextpost_text::String)
    # get what's needed
-   old_db_text = read("database.txt", String) # generalise, learn how to files
+   old_db_text = read("playground/database.txt", String) # generalise, learn how to files
 
    #time
    postdate = Dates.now()
@@ -40,10 +40,12 @@ end)
 #    Response(Plain, "ok")
 # end)
 
+config = Config(nworkers=8, request_timeout=15_000, max_body=5_242_880)
 
-server = Async(router) #either Server or Async
-start!(server, port=8080, blocking=false) # blocking=false lets me use repl
-
+server = Async(router, config)
+plug!(server, ratelimit(max_requests=10, window_seconds=30)) # Stricter limits
+plug!(server, health())
+start!(server; host="0.0.0.0", port=8080, blocking=false)
 
 # definitions
 s() = shutdown!(server)

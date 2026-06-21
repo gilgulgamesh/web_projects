@@ -1,3 +1,5 @@
+
+
 @font-face {
    font-family: "noto-emoji";
    src: url(fonts/other/noto-emoji/noto-emoji.ttf) format("truetype");
@@ -14,161 +16,78 @@
    src: url(fonts/text/verdana/verdana.ttf) format("truetype");
 }
 
-/*@font-face {
-    font-family: "juliamono";
-    src: url(fonts/code/juliamono/juliamono-regular.ttf) format("truetype");
+
+:root {
+   --dark-green: hsl(80, 80%, 12%);
+   --vivid-green: hsl(99.43, 70%, 30%);
+   --link-green: hsl(99.43, 52.24%, 40.27%);
+   --faded-green: hsl(96, 26%, 73%);
+   --post-bg-green:  hsl(90, 13%, 80%);
+   --light-green: hsl(90, 13%, 74%);
+   --article-bg-green: hsl(90, 13%, 80%);
+
+
 }
-
- @font-face {
-    font-family: "JuliaMono-bold";
-    src: url(fonts/code/juliamono/JuliaMono-Bold.ttf) format("truetype");
-}
-
- @font-face {
-    font-family: "JuliaMono-extrabold";
-    src: url(fonts/code/juliamono/JuliaMono-extrabold.ttf) format("truetype");
-}*/
-
 
 body {
-   background-color: hsl(90, 13%, 74%);
+   background-color: var(--light-green);
    font-family: "Verdana", "Helvetica", sans-serif;
+   font-weight: Normal ;
+   color: var(--dark-green);
+
 }
 
 a {
+   color:var(--link-green);
    text-decoration: none;
-   color: hsl(99.43, 52.24%, 40.27%);
 }
 
-h1 {
-   padding-top: 15px;
-   padding-left: 10px;
+b {
+   color:var(--vivid-green);
+
 }
 
-h2 {
-   font-weight: Normal;
-   display: inline;
-   margin-right: 1.3ch;
-}
-
-h4 {
-   margin-top: 4px;
-   font-weight: Normal;
-   font-size: 90%;
-}
-
-article {
-   margin-bottom: 60px;
-   margin-top: 30px;
-   background-color: hsl(90, 13%, 80%);
-   padding: min(25px, 3vw);
-}
 
 #posts {
-   color: hsl(80, 8%, 12%);
    max-width: 590px;
    margin: auto;
 }
 
-.Text {
-   line-height: 180%;
-   margin-bottom: 10px;
-   margin-bottom: 0.8lh;
-   padding-left: 5px;
-   padding-left: min(5px, 1.5vw);
-   padding-right: 5px;
-   padding-right: min(5px, 1vw);
+.post {
+   background-color: var(--post-bg-green);
+   margin-bottom: 60px;
+   margin-top: 30px;
+   padding: min(25px, 3vw);
 }
 
-.Title:empty~div.Text {
-   margin-left: 30px;
-   margin-left: min(30px, 3.5vw);
-   margin-right: 15px;
-   margin-right: min(15px, 2.5vw);
+.Title {
+   display: inline;
+   font-weight: Normal;
+   margin-right: 1.3ch;
+   margin-bottom: 0
 }
 
 .subtitle {
+   margin-top: 0px;
+   font-weight: Normal;
    text-align: right;
    margin-bottom: 0;
 }
 
-
-/*
-.readless-button-start {
-    position:absolute
-    }*/
-
-/*
-@font-face {
-    font-family: Papyrus;
-    src: url(/fonts/display/papyrus/papyrus.ttf) format("truetype");
-}
- @font-face {
-    font-family: Verdana;
-    src: url(/fonts/text/verdana/verdana.ttf) format("truetype");
+.Text {
+   white-space: pre-wrap;
+   margin-bottom: 10px;
+   margin-bottom: 0.8lh;
+   padding-left: min(5px, 1.5vw);
+   padding-right: min(5px, 1vw);
 }
 
-body{
-    background-color: hsl(90, 13%, 74%);
-    font-family: "Verdana", "Helvetica", sans-serif;
-}
-h1 {
-    padding-top: 15px ;
-    padding-left: 10px
-}
-h2{
-    font-weight: Normal ;
-    display: inline-block;
-    margin-top: 0.4rem;
-    margin-bottom: 0;
-    padding-right: 1ch;
-
-
-}
-h4{
-    margin-top: 4px;
-    font-weight: Normal ;
-    font-size: 90%;
-
-}
-a {
-    text-decoration: none;
-    color: hsl(99.43, 52.24%, 40.27%)
-  }
-
-
-.subtitle {
-    text-align:right ;
-    margin-bottom: 0
+.Title:empty~div.Text {
+   margin-left: min(30px, 3.5vw);
+   margin-right: min(15px, 2.5vw);
 }
 
-article {
-    margin-bottom:60px;
-    margin-top:30px;
-    background-color: hsl(90, 13%, 80%);
-    padding: min(25px,3vw)
-}
-
-.icon {
-    font-family: "Noto-Emoji" !important;
-    }
-
-
-#banner{
-    font-family: "Papyrus", "Times New Roman", serif;
-    padding-left: 5px;
-    margin: 5px;
-    text-align: left
-}
-#posts {
-    color: hsl(80, 80%, 12%);
-    max-width: 550px;
-    margin:auto;
-}
-#notes {
-    font-size: 80%;
-    padding: 20px
-}
-#village-links {
-    text-align: right;
+#banner {
+   padding-top: 15px;
+   padding-left: 10px;
 }

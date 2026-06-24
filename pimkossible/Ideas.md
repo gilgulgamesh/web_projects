@@ -62,3 +62,6 @@ __hi i am writing soething bold__
  [ ] javascript select
 
 - [ ] dsfdsf
+
+
+you cant delte a post but not its number or tags, can only add tags. So you're replacintg the post with "" everywhere that's user-defined.

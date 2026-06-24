@@ -1,4 +1,5 @@
 [deps]
 Dates = "ade2ca70-3891-5945-98fb-dc099432e06a"
-JSON = "682c06a0-de6a-54ab-a142-c8b1cf79cde6"
+HTMLSanitizer = "9a15a9f4-ddd5-46ee-89fc-c219f813dd6f"
+Hyperscript = "47d2ed2b-36de-50cf-bf87-49c2cf4b8b91"
 Mongoose = "494b707d-6180-4d60-8018-fdbee1ff8085"

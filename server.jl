@@ -2,7 +2,9 @@ using Mongoose
 using Dates
 include("parser.jl")
 
-date() = replace(string(Dates.now()), "T" => " at ")
+getdate() =  replace(string(Dates.now()), "T" => " at ")
+
+
 restarted = false
 
 if @isdefined(server)
@@ -14,22 +16,21 @@ end
 const LOG = open("output.txt", "a")
 
 if restarted
-    println("\nRebooted on $(date())")
-    write(LOG, "\nRebooted on $(date())")
+    println("\nRebooted on $(getdate())")
+    write(LOG, "\nRebooted on $(getdate())")
 else
-    println("\nTurned on $(date())")
-    write(LOG, "\nTurned on $(date())")
+    println("\nTurned on $(getdate())")
+    write(LOG, "\nTurned on $(getdate())")
 end
 
 
 function wraplog!(req)
-
    a = "\n   $(req.method) -> $(req.uri)"
    b = "\n   ------"
    c = "\n   === $(string(req.body))"
    d = "\n   ------"
    e = "\n   $(string(req))"
-   f = "\n   $(date()) \n   "
+   f = "\n   $(getdate()) \n   "
 
    out = *(a, b, c, d, e, f)
    write(LOG, out)
@@ -39,18 +40,26 @@ function wraplog!(req)
 end
 
 
+
+
+
+
 # # executes
 router = Router()
+
 route!(router, :post, "/", req-> begin
     wraplog!(req)
-        #3 [&Title=]?
-    if match(r"&Title=.+&User=.+&Content=.+", req.body) === nothing
-        Response(Plain, "400 Bad Request"; status=400)
-        addpost!(body)
-    else
-       Response(Plain, "Ok")
+
+    if match(r"&Title=(.+)&User=(.+)&Content=(.+)", req.body) === nothing
+        return Response(Plain, "Bad HTTP formatting"; status=400)
     end
+
+    addpost!(req.body)
+
 end)
+
+
+
 
 
 function logall()

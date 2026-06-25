@@ -1,15 +1,10 @@
-using Dates
-using Hyperscript #my fork
+using Dates, DelimitedFiles, Hyperscript #my fork
 
-
-@tags html head meta body style h1 h2 h4 span article section link
-@tags_noescape div
-
+TSV_FILE = "posts.csv"
+HTML_FILE = "pimkossible/posts.html"
 banner = "Feng Shui of Life Blog"
 
-include("posts.jl")
 
-output = "pimkossible/posts.html"
 
 function cutedate(dt)
     typeof(dt) == String && return dt
@@ -24,6 +19,33 @@ function cutedate(dt)
         "sep" => "sept"
     )
 end
+
+
+# syntax: newpost = ["hi" "my" "name" "is" "john"]
+function addpost!(postbody::String)
+    global postcount
+    postcount += 1
+    postnumber = "#$postcount"
+    date = cutedate(Dates.now())
+
+    title, user, content = match(r"&Title=(.+)&User=(.+)&User=(.+)", postbody)
+
+    io = open(TSV_FILE,  "a")
+
+    writedlm(io, [postnumber title user date content])
+    close(io)
+
+end
+
+
+@tags html head meta body style h1 h2 h4 span article section link
+@tags_noescape div
+
+
+include("posts.jl")
+
+
+
 
 
 const postbox(tup) =
@@ -61,3 +83,5 @@ for i in length(Posts.posts):-1:1
 end
 
 savehtml(output, Pretty(docubox(a)))
+
+data, headers = readdlm("posts.tsv", '\t' , String, '\n'; header=true)

@@ -1,5 +1,6 @@
 using Mongoose
 using Dates
+include("parser.jl")
 
 date() = replace(string(Dates.now()), "T" => " at ")
 restarted = false
@@ -20,13 +21,6 @@ else
     write(LOG, "\nTurned on $(date())")
 end
 
-function addpost!(nextpost::String)
-   db_loc = "playground/database.txt"
-   dbstring = read(db_loc, String)
-   dbfile = open(db_loc, "w")
-   write(dbfile, nextpost * "\n" * dbstring)
-   close(dbfile)
-end
 
 function wraplog!(req)
 
@@ -47,11 +41,15 @@ end
 
 # # executes
 router = Router()
-route!(router, :post, "/", req -> begin
-   addpost!(req.body)
-   wraplog!(req)
-   valid = "Title=Hi &User=Me &Content=My post"
-   typeof(req.body) == Str ? Response(Plain, "Ok") : Response(Plain, "400 Bad Request"; status=400)
+route!(router, :post, "/", req-> begin
+    wraplog!(req)
+        #3 [&Title=]?
+    if match(r"&Title=.+&User=.+&Content=.+", req.body) === nothing
+        Response(Plain, "400 Bad Request"; status=400)
+        addpost!(body)
+    else
+       Response(Plain, "Ok")
+    end
 end)
 
 

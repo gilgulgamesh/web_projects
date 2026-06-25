@@ -2,14 +2,20 @@ using Dates
 using Hyperscript #my fork
 
 
-@tags html head meta body style h1 h2 h4 span div article section
+@tags html head meta body style h1 h2 h4 span article section link
+@tags_noescape div
 
-const banner = h1(id="banner", "Feng Shui of Life Blog")
+banner = "Feng Shui of Life Blog"
 
-function cutedate(dt::DateTime)
+include("posts.jl")
+
+output = "pimkossible/posts.html"
+
+function cutedate(dt)
+    typeof(dt) == String && return dt
+
     a = Dates.format(dt, "p-d-u'yy") # use time of day to get 🌇🏙️🌆 or smn
     b = lowercase(string(a))
-
     c = replace( b,
         "apr" => "april",
         "jun" => "june",
@@ -20,22 +26,38 @@ function cutedate(dt::DateTime)
 end
 
 
-const postbox(Title::String, User::String, Content::String, date, postnumber) =
-    article.post(id="#" * postnumber,
-        h2.Title("$postnumber" *" "* Title),
-        h4.subtitle(User *" "* cutedate(date)),
-        div.Content(Content)
+const postbox(tup) =
+    article.post(id="#$(tup[1])",
+        h2.title(
+            span("#$(tup[1])" * " "),
+            span.Title(tup[2])
+        ),
+        h4.subtitle(
+            span.User(tup[3]),
+            span(" " * cutedate(tup[4]))
+        ),
+        div.Content(tup[5])
     )
-
 
 const docubox(allposts) =
 html(
     head(
         meta(charset="UTF-8"),
-        style(src="https://pimkossible.neocities.org/style.css"),
+        link(rel="stylesheet", href="style.css"),
     ),
     body(
-        h1(id="banner"),
-        section(id="posts", allposts),
+        h1(id="banner", banner),
+        section(id="posts",
+            allposts,
+            ),
         ),
     )
+
+
+
+a = []
+for i in length(Posts.posts):-1:1
+     push!(a, postbox(Posts.posts[i]))
+end
+
+savehtml(output, Pretty(docubox(a)))

@@ -1,5 +1,4 @@
 
-
 @font-face {
    font-family: "noto-emoji";
    src: url(fonts/other/noto-emoji/noto-emoji.ttf) format("truetype");
@@ -60,7 +59,7 @@ b {
    padding: min(25px, 3vw);
 }
 
-.Title {
+.title {
    display: inline;
    font-weight: Normal;
    margin-right: 1.3ch;
@@ -74,7 +73,7 @@ b {
    margin-bottom: 0;
 }
 
-.Text {
+.Content {
    white-space: pre-wrap;
    margin-bottom: 10px;
    margin-bottom: 0.8lh;
@@ -82,12 +81,13 @@ b {
    padding-right: min(5px, 1vw);
 }
 
-.Title:empty~div.Text {
+.title:has(.Title:empty)~div.Text {
    margin-left: min(30px, 3.5vw);
    margin-right: min(15px, 2.5vw);
 }
 
 #banner {
+    font-family: Papyrus;
    padding-top: 15px;
    padding-left: 10px;
 }

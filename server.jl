@@ -47,22 +47,31 @@ end
 
 # # executes
 router = Router()
-route!(router, :get, "/", req -> wraplog!(req))
-route!(router, :put, "/", req -> wraplog!(req))
-route!(router, :delete, "/", req -> wraplog!(req))
-route!(router, :patch, "/", req -> wraplog!(req))
 route!(router, :post, "/", req -> begin
    addpost!(req.body)
    wraplog!(req)
    valid = "Title=Hi &User=Me &Content=My post"
-   req.body == valid ? Response(Plain, "Ok") : Response(Plain, "400 Bad Request"; status=400)
+   typeof(req.body) == Str ? Response(Plain, "Ok") : Response(Plain, "400 Bad Request"; status=400)
 end)
 
-route!(router, :post, "*", req -> wraplog!(req))
-route!(router, :get, "*", req -> wraplog!(req))
-route!(router, :put, "*", req -> wraplog!(req))
-route!(router, :delete, "*", req -> wraplog!(req))
-route!(router, :patch, "*", req -> wraplog!(req))
+
+function logall()
+    route!(router, :get, "/", req -> wraplog!(req))
+    route!(router, :put, "/", req -> wraplog!(req))
+    route!(router, :delete, "/", req -> wraplog!(req))
+    route!(router, :patch, "/", req -> wraplog!(req))
+    route!(router, :head, "/", req -> wraplog!(req))
+    route!(router, :options, "/", req -> wraplog!(req))
+    route!(router, :get, "*", req -> wraplog!(req))
+    route!(router, :put, "*", req -> wraplog!(req))
+    route!(router, :patch, "*", req -> wraplog!(req))
+    route!(router, :delete, "*", req -> wraplog!(req))
+    route!(router, :head, "*", req -> wraplog!(req))
+    route!(router, :options, "*", req -> wraplog!(req))
+    route!(router, :post, "*", req -> wraplog!(req))
+end
+
+logall()
 
 config = Config(max_body=5_242_880)
 server = Server(router, config)

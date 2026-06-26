@@ -15,7 +15,6 @@
    src: url(fonts/text/verdana/verdana.ttf) format("truetype");
 }
 
-
 :root {
    --dark-green: hsl(80, 80%, 12%);
    --vivid-green: hsl(99.43, 70%, 30%);
@@ -24,8 +23,6 @@
    --post-bg-green:  hsl(90, 13%, 80%);
    --light-green: hsl(90, 13%, 74%);
    --article-bg-green: hsl(90, 13%, 80%);
-
-
 }
 
 body {
@@ -43,16 +40,14 @@ a {
 
 b {
    color:var(--vivid-green);
-
 }
-
 
 #posts {
    max-width: 590px;
    margin: auto;
 }
 
-.post {
+article {
    background-color: var(--post-bg-green);
    margin-bottom: 60px;
    margin-top: 30px;

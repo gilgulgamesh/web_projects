@@ -53,9 +53,11 @@ route!(router, :post, "/", req-> begin
     if match(r"&Title=(.+)&User=(.+)&Content=(.+)", req.body) === nothing
         return Response(Plain, "Bad HTTP formatting"; status=400)
     end
-
+    # try
     addpost!(req.body)
-
+    # catch
+        # Response(Plain, "something went wrong"; status=400)
+    # end
 end)
 
 

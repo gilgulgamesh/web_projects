@@ -5,7 +5,7 @@ HTML_FILE = "pimkossible/posts.html"
 banner = "Feng Shui of Life Blog"
 
 
-TSV_FILE = "posts.csv"
+TSV_FILE = "posts.tsv"
 function cutedate(dt)
     typeof(dt) == String && return dt
 
@@ -13,7 +13,7 @@ function cutedate(dt)
     b = lowercase(string(a))
     c = replace( b,
         "apr" => "april",
-        "jun" => "`june",
+        "jun" => "june",
         "jul" => "july",
         "aug" => "august",
         "sep" => "sept"
@@ -25,56 +25,70 @@ function addpost!(postbody::String)
     prior = readdlm(TSV_FILE, '\t', AbstractString)
     columns =  size(prior, 1) # 1 is columns, including headers so does +1
     row = makerow(postbody, columns)
+    # if row[2:end] == prior[end, 2:end]
+    #     return Response(Plain, "we got it last time babes", status=400)
+    # end
+    saverow(row)
+    updatehtml()
+    Response(Plain, "yay"; status=200)
+end
 
-    @show row[2:end] == prior[end, 2:end]
-    if row[2:end] == prior[end, 2:end]
-        return Response(Plain, "we got it last time babes", status=400)
-    end
-    try
-        saverow(row)
-    catch
-        return Response(Plain, "Saving row failed: Try again", status=400)
-    end
-    Response(Plain, "added")
+function makerow(postbody::String, columns::Int)
+    title, user, content = match(r"&Title=(.+)&User=(.+)&Content=(.+)", postbody).captures
+
+    date = cutedate(Dates.now())
+    postnumber = "#$columns"
+    row::Vector{String} = [postnumber; title; user; date; content]
 end
 
 function saverow(row)
     io = open(TSV_FILE,  "a")
     writedlm(io, permutedims(row), '\t')
     close(io)
-    Response(Plain, "yay")
-
-end
-
-# syntax: newpost = ["hi" "my" "name" "is" "john"]
-function makerow(postbody::String, columns::Int)
-
-    title, user, content = match(r"&Title=(.+)&User=(.+)&Content=(.+)", postbody).captures
-    date = cutedate(Dates.now())
-
-    postnumber = "#$columns"
-
-    row::Vector{String} = [postnumber; title; user; date; content]
 end
 
 
-@tags html head meta body style h1 h2 h4 span article section link div
-# @tags_noescape div article #test this on stock. if it works i'm ballin.
+@tags html head meta body style h1 h2 h4 span article  link div
+@tags_noescape div article section #test test if stock works on section , when article is a string anyway
 
 
+# syntax: row = ["hi"; "my"; "name"; "is"; "john"]
 
+function updatehtml()
+    data, headerrow  = readdlm(TSV_FILE, '\t', String, header=true)
+    allposts = []
+    for i in 1:size(data, 1)
+        d = reverse(data, dims=1)[i, 1:5]
+        push!(allposts, postbox(d))
+    end
+    savehtml(HTML_FILE, Pretty(docubox(allposts)))
 
-const postbox(tup) =
-    article.post(id="#$(tup[1])",
-        h2.title(
-            span("#$(tup[1])" * " "),
-            span.Title(tup[2])
+    r = replace( read(HTML_FILE, String),
+        "<html><html>" => "<html>",
+        # """<section id="posts">""" => """<section id="posts">
+        # """,
+        # "</article>" => """</article>
+        # """,
+        "</html></html>" => "</html>" )
+    io = open(HTML_FILE, "w")
+    write(io, r)
+    close(io)
+    println("good")
+end
+
+#omfg i just want to cat, save, flip
+
+const postbox(row) =
+    article(id=row[1][2:end], #shoulda kept it without the # but ugh
+        h2.heading(
+            span(row[1] * " "),
+            span.Title(row[2])
         ),
-        h4.subtitle(
-            span.User(tup[3]),
-            span(" " * cutedate(tup[4]))
+        h4.subheading(
+            span.User(row[3]),
+            span(" " * cutedate(row[4]))
         ),
-        div.Content(tup[5])
+        div.Content(row[5])
     )
 
 const docubox(allposts) =

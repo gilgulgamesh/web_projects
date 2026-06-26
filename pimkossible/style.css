@@ -59,14 +59,14 @@ b {
    padding: min(25px, 3vw);
 }
 
-.title {
+.heading {
    display: inline;
    font-weight: Normal;
    margin-right: 1.3ch;
    margin-bottom: 0
 }
 
-.subtitle {
+.subheading {
    margin-top: 0px;
    font-weight: Normal;
    text-align: right;

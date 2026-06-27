@@ -18,13 +18,15 @@ function cutedate(dt)
     )
 end
 
-using DelimitedFiles, HTMLSanitizer, Hyperscript #my fork
+using DelimitedFiles, HTMLSanitizer, Hyperscript, URIs #my fork
 
 function addpost!(postbody::String)
     prior = readdlm(TSV_FILE, '\t', String)
+    evilprior = readdlm(EVIL_TSV_FILE, '\t', String)
     columns =  size(prior, 1) # including header  does +1 (1 arg is dims)
     row = makerow(postbody, columns)
-    if row[2:end] == prior[end, 2:end]
+    row = unescapeuri.(row)
+    if row[2:end] == prior[end, 2:end] || row[2:end] == evilprior[end, 2:end]
         return Response(Plain, "we got it last time babes", status=400)
     end
     saverow(row, makesafe(row))
@@ -87,12 +89,13 @@ function updatehtml()
     r = replace(w,
         "<html><html>" => "<html>",
         '+' => ' ',
-        "%27" => '\'',
-        "%3C" => '<',
-        "%3D" => '=',
-        "%22" => '"',
-        "%2F" => '/',
-        "%3E" =>  '>',
+        # "%27" => '\'',
+        # "%3C" => '<',
+        # "%3D" => '=',
+        # "%22" => '"',
+        # "%2F" => '/',
+        # "%3E" =>  '>',
+        # "%3A" => ':',
         "</html></html>" => "</html>" )
     write(HTML_FILE, r)
 end

@@ -30,12 +30,12 @@ function addpost!(postbody::String)
     saverow(row, makesafe(row))
     updatehtml()
     sendwait()
-    Response(Link, "yay"; status=200)
 end
 
 function makerow(postbody::String, columns::Int)
     title, user, content = match(r"Title=(.+)&User=(.+)&Content=(.+)", postbody).captures
     date = cutedate(Dates.now())
+    user = uppercase(user[1]) * lowercase(user[2:end])
     postnumber = "#$columns"
     row::Vector = [
         postnumber
@@ -86,6 +86,13 @@ function updatehtml()
     w = string(Pretty(docubox(allposts)))
     r = replace(w,
         "<html><html>" => "<html>",
+        '+' => ' ',
+        "%27" => '\'',
+        "%3C" => '<',
+        "%3D" => '=',
+        "%22" => '"',
+        "%2F" => '/',
+        "%3E" =>  '>',
         "</html></html>" => "</html>" )
     write(HTML_FILE, r)
 end

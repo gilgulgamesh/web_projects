@@ -70,5 +70,7 @@ start!(server; host="0.0.0.0", port=8080, blocking=false)
 
 
 function sendwait()
-     run(`pimkosible/upload.bat`) #add limiter!
+     run(`"C:\\Users\\Gal\\home\\web\\pimkossible\\upload.bat"`) #add limiter!
+     Response(Html, read("redirect.html", String); status=200)
+
 end

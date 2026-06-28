@@ -1,7 +1,7 @@
 using Dates
 
 HTML_FILE = "pimkossible/posts.html"
-banner = "Feng Shui of Life Blog"
+banner = "Feng Shui of Blog"
 TSV_FILE = "posts.tsv"
 EVIL_TSV_FILE = "EVILposts.tsv"
 
@@ -25,6 +25,7 @@ function addpost!(postbody::String)
     evilprior = readdlm(EVIL_TSV_FILE, '\t', String)
     columns =  size(prior, 1) # including header  does +1 (1 arg is dims)
     row = makerow(postbody, columns)
+    row = replace.(row,'+' => ' ') #figure out why this is broken?
     row = unescapeuri.(row)
     if row[2:end] == prior[end, 2:end] || row[2:end] == evilprior[end, 2:end]
         return Response(Plain, "we got it last time babes", status=400)
@@ -52,10 +53,7 @@ function makesafe(row::Vector)
     # upgrade to dompurify
     # consider limiting the limited one more for sanity
     saferow::Vector = [
-        sanitize(row[1], whitelist = HTMLSanitizer.LIMITED)
-        sanitize(row[2], whitelist = HTMLSanitizer.LIMITED)
-        sanitize(row[3], whitelist = HTMLSanitizer.LIMITED)
-        sanitize(row[4], whitelist = HTMLSanitizer.LIMITED)
+        sanitize.(row[1; 2; 3; 4], whitelist = HTMLSanitizer.LIMITED)
         sanitize(row[5], whitelist = HTMLSanitizer.WHITELIST)
     ]
 end
@@ -74,8 +72,8 @@ function saverow(row::Vector,  saferow::Vector)
     end
 end
 
-@tags html head meta body style h1 h2 h4 span article  link
-@tags_noescape div article section #can this possible work recursively with stock...
+@tags html head meta body style h1 h2 h4 span  link
+@tags_noescape div article section #can this possible work recursively with stock.. .
 function updatehtml()
     data, headerrow  = readdlm(TSV_FILE, '\t', String, header=true)
     allposts = []
@@ -88,14 +86,7 @@ function updatehtml()
     w = string(Pretty(docubox(allposts)))
     r = replace(w,
         "<html><html>" => "<html>",
-        '+' => ' ',
-        # "%27" => '\'',
-        # "%3C" => '<',
-        # "%3D" => '=',
-        # "%22" => '"',
-        # "%2F" => '/',
-        # "%3E" =>  '>',
-        # "%3A" => ':',
+
         "</html></html>" => "</html>" )
     write(HTML_FILE, r)
 end

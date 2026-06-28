@@ -73,7 +73,7 @@ function saverow(row::Vector,  saferow::Vector)
 end
 
 @tags html head meta body style h1 h2 h4 span  link
-@tags_noescape div article section #can this possible work recursively with stock.. .
+@tags_noescape div article section iframe#can this possible work recursively with stock.. .
 function updatehtml()
     data, headerrow  = readdlm(TSV_FILE, '\t', String, header=true)
     allposts = []
@@ -112,7 +112,11 @@ html(
         link(rel="stylesheet", href="style.css"),
     ),
     body(
-        h1(id="banner", banner),
+        h1(id="banner", banner,
+            iframe(id="status",
+                src="https://content-edible.org/status.html"; style="height:2.3rem; width: 4ch; border;0px solid; float:inline-end"
+            )
+        ),
         section(id="posts",
             allposts,
         ),

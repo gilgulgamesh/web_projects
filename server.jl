@@ -45,6 +45,13 @@ route!(router, :post, "/", req-> begin
     #     Response(Plain, "something went wrong"; status=400)
     # end
 end)
+route!(router, :get, "/status.html", req -> begin
+    wraplog!(req)
+    Response(Html, read("pimkossible/status.html", String); status=200)
+end)
+
+
+
 
 route!(router, :get, "/", req -> wraplog!(req))
 route!(router, :put, "/", req -> wraplog!(req))

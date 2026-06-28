@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Alternative Editors</title>
+   <link href="../style.css" rel="stylesheet" type="text/css" media="all">
+   <style type="text/css">
+      .Content {
+         white-space: pre-wrap
+      }
+      input {
+         background-color: var(--link-green);
+         border: 0px solid;
+         padding: 3px;
+         margin: 3px;
+      }
+      input:focus {
+         padding: 6px;
+         margin: 0px;
+         border: 0px solid;
+      }
+   </style>
+</head>
+<body>
+   <section id=title style="width:55ch; margin:auto">
+      <h1>Alternative Editors<iframe src="https://content-edible.org/status.html" style="height:2.3rem; width: 4ch;border:0px solid;float:inline-end"></iframe></h1>
+   </section>
+   <section id=posts>
+      <article class=post>
+         <h2 class=Title>HTML Form</h2>
+         <h4 class=subtitle>
+            <span class=User></span>
+         </h4>
+         <form action=http://127.0.0.1:8080 method="POST">
+            <label for="Title">Title:</label><br>
+            <input type="text" id="Title" name="Title"><br>
+            <label for="User">User:</label><br>
+            <input type="text" id="User" name="User"><br>
+            <label for="Content">Content:</label><br>
+            <input type="text" id="Content" name="Content"><br><br>
+            <div class=Content>all 3 are "required" but you can just put spaces in. Yes, i have things to polish up
+         </div>
+            <input style="background-color: var(--vivid-green);color: white;" type="submit" value="Submit"> <!-- hardbake these in lol it's for poor ppl -->
+         </form>
+      </article>
+      <article class=post>
+         <h2 class=Title>Yes you can upload without the builder!</h2>
+         <h4></h4>
+         <div class=Content>Only wrinkle is that you can't get consecutive fast live updates, because NC would rate limit me. Use a manual preview method, or be content with re-submitting and watching your post change (or smn).
+
+hopefully this helps someone without modern tech, or with a cool script
+         </div>
+      </article>
+
+         <!--<article class=post>
+            <h2 class=Title>CLI</h2>
+            <h4 class=subtitle>
+               <span class=User></span>
+            </h4>
+            <div class=Content>Yes you can send things without a browser too! For curl (pre-installed everywhere) the syntax is smn like
+               <pre  style=" padding-left: 2ch; white-space:pre-wrap"><span style="user-select: none">(on one line)> </span>curl -d 'Title=Hi &User=Me &Content=My post' content-edible.org</pre>
+            </div>
+         </article>-->
+
+   </section>
+   <script>
+   </script>
+</body>
+
+</html>

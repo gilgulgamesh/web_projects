@@ -1,4 +1,0 @@
-<!doctype html>
-<html><div class="entry">
-  <h1>An Important Announcement</h1>
-</div></html>

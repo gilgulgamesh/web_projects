@@ -34,6 +34,7 @@ body {
    font-family: "Verdana", "Helvetica", sans-serif;
    font-weight: Normal ;
    color: var(--dark-green);
+   line-height:145%
 
 }
 
@@ -47,33 +48,42 @@ b {
 }
 
 #posts {
-   max-width: 40rem;
+    /*max-width: 50ch;*/
    margin: auto;
 }
 
 article {
+    max-width: min(50ch, 95vw);
    background-color: var(--article-bg-green);
+   margin:auto;
    margin-bottom: 60px;
    margin-top: 30px;
-   padding: min(25px, 3vw);
+   padding: 1ch;
 }
 
 .heading {
     font-size:125%;
-    display: inline ;
-    /*float:inline;*/
+    /*display: inline-block ;*/
+    display:inline-block;
     /*float: left;zz*/
    font-weight: Normal;
    margin-right: 1.3ch;
-   /*margin-bottom: 0*/
+   margin-left: 0.3ch;
+   margin-top: 0px;
+
+   margin-bottom: 0px;
+   padding-top:0px
+   /*[]-top: 100px*/
 }
 
 .subheading {
     align-items: baseline-position;
    float: inline-end;
+   /*text-align:right;*/
    /*display: flexbox ;*/
-   margin-top: 0.1lh;
+   margin-top: 0px;
    /*margin-bottom: 0px;*/
+   font-size:90%;
    font-weight: Normal;
    margin-bottom: 0;
    font-family: verdana-sb;
@@ -82,8 +92,14 @@ article {
 .Content {
     width: 100%;
    white-space: pre-wrap;
-   margin: 0.5lh;
-   margin-top: 1.2rem;
+   /*paddmaing-right: min(1.5ch, 30px);*/
+   padding-left: min(0ch, 40px);
+
+   margin-top: 20px;
+   margin-bottom:20px;
+   margin-left: 2%;
+
+   max-width: 96%
 
 
    /*padding-left: min(20px, 2vw);

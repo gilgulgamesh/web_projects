@@ -53,7 +53,10 @@ function makesafe(row::Vector)
     # upgrade to dompurify
     # consider limiting the limited one more for sanity
     saferow::Vector = [
-        sanitize.(row[1; 2; 3; 4], whitelist = HTMLSanitizer.LIMITED)
+        sanitize(row[1], whitelist = HTMLSanitizer.LIMITED)
+        sanitize(row[2], whitelist = HTMLSanitizer.LIMITED)
+        sanitize(row[3], whitelist = HTMLSanitizer.LIMITED)
+        sanitize(row[4], whitelist = HTMLSanitizer.LIMITED)
         sanitize(row[5], whitelist = HTMLSanitizer.WHITELIST)
     ]
 end

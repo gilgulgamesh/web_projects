@@ -9,16 +9,28 @@
       .Content {
          white-space: pre-wrap
       }
-      input {
-         background-color: var(--link-green);
+      input, textarea {
+         background-color: mintcream;
          border: 0px solid;
          padding: 3px;
          margin: 3px;
+         font-family:verdana;
+         max-width:100%
+
       }
-      input:focus {
+      input:focus,
+      textarea:focus {
+      {
          padding: 6px;
          margin: 0px;
          border: 0px solid;
+      }
+      #Content-box {
+          field-sizing: content;
+          height:fit-content;
+          overflow: show;
+          /*min-width: 60px;*/
+
       }
    </style>
 </head>
@@ -32,13 +44,13 @@
          <h4 class=subtitle>
             <span class=User></span>
          </h4>
-         <form action=http://127.0.0.1:8080 method="POST">
+         <form action="https://content-edible.org" method="POST">
             <label for="Title">Title:</label><br>
-            <input type="text" id="Title" name="Title"><br>
+            <input type="text" id="Title-box" name="Title"><br>
             <label for="User">User:</label><br>
-            <input type="text" id="User" name="User"><br>
+            <input type="text" id="User-box" name="User"><br>
             <label for="Content">Content:</label><br>
-            <input type="text" id="Content" name="Content"><br><br>
+            <textarea style="background-color: mintcream;" id="Content-box" name="Content"></textarea><br>
             <div class=Content>all 3 are "required" but you can just put spaces in. Yes, i have things to polish up
          </div>
             <input style="background-color: var(--vivid-green);color: white;" type="submit" value="Submit"> <!-- hardbake these in lol it's for poor ppl -->

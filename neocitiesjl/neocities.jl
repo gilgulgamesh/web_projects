@@ -4,7 +4,7 @@ default() = include(conf_path)
 default()
 # include("neocities_config.jl")
 
-export default
+
 
 # set paths separately from newname.
 # root = _root  expanduser(_root)
@@ -15,14 +15,15 @@ function upload(files, newname=nothing; site=SITE)
         if isnothing(newname)
             newname = files
         end
-        filestring = """ -F "$newname=@$ROOT/$files" """
+        filestring =  ```-F "$newname=@$ROOT/$files"```
+        # @show filestring typeof(filestring)
     else
         filelist = []
         for i in files
-            push!(filelist, "-F")
-            push!(filelist, """ "$newname$i=@$ROOT/$i" """)
+            push!(filelist, `-F `)
+            push!(filelist,  `$newname$i=@$ROOT/$i`)
         end
-        filestring = join(filelist)
+        filestring = join(filestring)
     end
     global SHELL, PASS, ROOT, WAIT
     run(`$SHELL curl -u "$site:$PASS" $filestring "https://neocities.org/api/upload"`; wait=WAIT)
@@ -70,13 +71,13 @@ function info(site=SITE)
     run(`curl "https://neocities.org/api/info?sitename=$site"`, wait=WAIT)
 
 end
-"""
-Note, filepath starts from your directory
+# """
+# Note, filepath starts from your directory
 
-please edit te config file at ~/.julia/whatever/neocities_config.jl
-or set their values for this session
+# please edit te config file at ~/.julia/whatever/neocities_config.jl
+# or set their values for this session
 
-note
-for ROOT use full path with '/' and no drive name
-use `cmd` or `pwsh` for windows, `` works otherwise
-"""
+# note
+# for ROOT use full path with '/' and no drive name
+# use `cmd` or `pwsh` for windows, `` works otherwise
+# """

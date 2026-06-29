@@ -222,12 +222,12 @@
 </div>             &lt;/div&gt;
          &lt;/article&gt;</section>     <section class="code" id=footer-code>      &lt;/section&gt;
       &lt;script&gt; <div id=buttons>
-                    <button onclick="addBold()" type=button>&lt;b&gt;<span
+                    <button onclick="adda(bold)" type=button>&lt;b&gt;<span
                             style="font-weight: bold">bold</span>&lt;/b&gt;</button>
-                    <button  style="font-family:Times New Roman;font-weight:bold" onclick="addItalic()" type=button><i>&lt;i&gt;italic&lt;/i&gt;</i></button>
-                    <button onclick="addH2()" type=button>&lt;h2&gt;<span display:inline
+                    <button  style="font-family:Times New Roman;font-weight:bold" onclick="adda(italic)" type=button><i>&lt;i&gt;italic&lt;/i&gt;</i></button>
+                    <button onclick="adda(h2)" type=button>&lt;h2&gt;<span display:inline
                             style="font-size: large">Big2</span>&lt;/h2&gt;</button>
-                    <button onclick="addLink()" type=button>&lt;a&gt;<span
+                    <button onclick="adda(alink)" type=button>&lt;a&gt;<span
                             style="text-decoration: underline;color: #3c8218">a link</span>&lt;a&gt;</button>
                 </div>      &lt;/script&gt;
    &lt;/body&gt;
@@ -289,39 +289,67 @@ function AlignProperly() {
   var previewWindow = document.getElementById("preview");
 }
 // buttons
-function addBold() {
-  let element = document.getElementById("Content-field");
+//
 
-  let b = document.createElement("b");
-  element.append("<b></b>");
+const content = document.getElementById("Content-field");
 
-  console.log(div.childNodes);
+const bold = {
+    open: false,
+    start: "<b>",
+    end: "</b>"
+};
+const italic = {
+    open: false,
+    start: "<i>",
+    end: "</i>"
+};
+const h2 = {
+    open: false,
+    start: "<h2>",
+    end: "</h2>"
+};
+const alink = {
+    open: false,
+    start: "<a href=PasteYourLink'Ere>",
+    end: "</a>"
+};
+
+
+function adda(x) {
+    if (!x.open) {
+        content.append(x.start);
+    } else {
+        content.append(x.end);
+    };
+    x.open = !x.open;
+     setEndOfContenteditable(content);
+};
+
+
+function setEndOfContenteditable(contentEditableElement)
+{
+    var range,selection;
+    if(document.createRange)//Firefox, Chrome, Opera, Safari, IE 9+
+    {
+        range = document.createRange();//Create a range (a range is a like the selection but invisible)
+        range.selectNodeContents(contentEditableElement);//Select the entire contents of the element with the range
+        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+        selection = window.getSelection();//get the selection object (allows you to change selection)
+        selection.removeAllRanges();//remove any selections already made
+        selection.addRange(range);//make the range you have just created the visible selection
+    }
+    else if(document.selection)//IE 8 and lower
+    {
+        range = document.body.createTextRange();//Create a range (a range is a like the selection but invisible)
+        range.moveToElementText(contentEditableElement);//Select the entire contents of the element with the range
+        range.collapse(false);//collapse the range to the end point. false means collapse to end rather than the start
+        range.select();//Select the range (make it the visible selection
+    }
 }
 
-function addItalic() {
-  let element = document.getElementById("Content-field");
-
-  let i = document.createElement("i");
-  element.append("<i></i>");
-
-  console.log(div.childNodes);
-}
-
-function addH2() {
-  let element = document.getElementById("Content-field");
-  let h2 = document.createElement("h2");
-  element.append("<h2></h2>");
-
-  console.log(div.childNodes);
-}
-
-function addLink() {
-  let element = document.getElementById("Content-field");
-  let a = document.createElement("a");
-  element.append("<a href=PasteYourLink'Ere>Text</a>");
-
-  console.log(div.childNodes);
-}
+// make this my own, polish it up to
+//  -- add to cursor position
+//  -- reset all to zero if cleared. oh ooh clear button? it'd refresh lol
 
 
 </script>

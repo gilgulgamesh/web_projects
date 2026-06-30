@@ -196,7 +196,7 @@
         <label for="header-footer-checkbox">header/footer selectabe</label>
 </noscript>
 
-        <div id=preview-window scrolling="no"><iframe title='preview' id="preview" srcdoc="<h1 style=&quot;font-family: verdana &quot;>
+        <div id=preview-window scrolling="no"><iframe title='preview' id="preview" srcdoc="<h1 style=&quot;font-family: verdana; &quot;>
     Post editor
 </h1> "></iframe>
         </div><br><br>
@@ -250,11 +250,14 @@
 
             <iframe id="status" src="https://content-edible.org/status.html" style="height:2.3rem; width: 5rem; border;0px solid; display:inline"></iframe>
 
+         <h1 display:inline-block><a href=../desocialize.html>Feng Shui of Blog</a></h1>
 
+
+<!--"<html>
+-->
 
 
     <script>
-
 
 
 
@@ -272,7 +275,7 @@ function ReplaceShit() {
   var userBox = document.getElementById("userBox")
   var contentBox = document.getElementById("contentBox")
 
-  preview.srcdoc = "<div referrerpolicy='strict-origin-when-cross-origin' style=\"white-space:pre-wrap;font-family:verdana;color:#333;\">" + content.innerText + "</div>";
+  preview.srcdoc =   "<head><meta charset=UTF-8 /><link rel=stylesheet href=https://pimkossible.neocities.org/style.css /></head><body style=background-color:transparent><section id=posts >" + content.innerText + "</section></body></html>";
   // previewWindow.scrollTo(0, top);
 
 

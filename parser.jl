@@ -1,6 +1,6 @@
 using Dates
 
-HTML_FILE = "pimkossible/private/posts.html"
+HTML_FILE = "pimkossible/posts.html"
 banner = "Feng Shui of Blog"
 TSV_FILE = "pimkossible/private/posts.tsv"
 EVIL_TSV_FILE = "pimkossible/private/EVILposts.tsv"
@@ -116,9 +116,12 @@ html(
     ),
     body(
         h1(id="banner", banner,
+            "&nbsp;&nbsp;&nbsp;",
+            a(href="build/post-editor.html", "Post Editor"),
             iframe(id="status",
                 src="https://content-edible.org/status.html"; style="height:2.3rem; width: 4ch; border;0px solid; float:inline-end"
             )
+
         ),
         section(id="posts",
             allposts,

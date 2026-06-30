@@ -78,7 +78,7 @@ start!(server; host="0.0.0.0", port=8080, blocking=false)
 
 
 function sendwait()
-    upload("pimkossible/private/posts.html", "desocialize.html")
+    upload("HTML_FILE", "desocialize.html")
     #add limiter
     Response(Html, read("redirect.html", String); status=200)
 

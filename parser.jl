@@ -1,9 +1,9 @@
 using Dates
 
-HTML_FILE = "pimkossible/posts.html"
+HTML_FILE = "pimkossible/private/posts.html"
 banner = "Feng Shui of Blog"
-TSV_FILE = "posts.tsv"
-EVIL_TSV_FILE = "EVILposts.tsv"
+TSV_FILE = "pimkossible/private/posts.tsv"
+EVIL_TSV_FILE = "pimkossible/private/EVILposts.tsv"
 
 function cutedate(dt)
     typeof(dt) == String && return dt

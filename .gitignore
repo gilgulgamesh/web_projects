@@ -8,3 +8,9 @@ pimkossible/neocities.config
 pimkossible/neocities.jl
 pimkossible/nc_config.jl
 neocitiesjl/neocities_config.jl
+posts.tsv
+EVILposts.tsv
+Manifest.toml
+pimkossible/blog.html
+pimkossible/posts.html
+pimkossible/private/

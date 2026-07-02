@@ -44,14 +44,14 @@ function seed(name) {
     var b = name[l-2];
     var c = name[l-1];
 
-    var s1 = (a.charCodeAt(0)%26) ;
-    var s2 = (b.charCodeAt(0)%26) ;
-    var s3 = (c.charCodeAt(0)%26) ;
+    var s1 = ((a.charCodeAt(0)-97)%26) ;
+    var s2 = ((b.charCodeAt(0)-97)%26) ;
+    var s3 = ((c.charCodeAt(0)-97)%26) ;
     //bold shold be the color * 10
 
-    var bg = 'rgb(' + String(190+s1) + ', ' + String(190+s2) + ', ' + String(190+s3) + ')';
-    var fg = 'rgb(' + String(3*s1) + ', ' + String(3*s2) + ', ' + String(3*s3) + ')';
-    var vivid = 'rgb(' + String(10*s1) + ', ' + String(10*s2) + ', ' + String(10*s3) + ')';
+    var bg = 'rgb(' + String(195+s1*0.75) + ', ' + String(195+s2*0.75) + ', ' + String(195+s3*0.75) + ')';
+    var fg = 'rgb(' + String(2.5*s1) + ', ' + String(2.5*s2) + ', ' + String(2.5*s3) + ')'; //3*?
+    var vivid = 'rgb(' + String(7*s1) + ', ' + String(7*s2) + ', ' + String(7*s3) + ')';
 
     e = document.querySelector('article');
     e.style.backgroundColor = bg;
@@ -73,4 +73,36 @@ maybe use
 body {
     background-color: rgb(175, 175, 175);
 }
+  --light-green: hsl(1, 0%, 74%);
+```
+
+```jl
+function seed(str)
+    a, b, c = str[end-2:end] 
+    s1, s2, s3 = Int(a), Int(b), Int(c)
+    ((s1, s2, s3) .- 97) .%26
+end
+function s(name)
+    sd = seed(name)
+    i = (175, 175, 175) .+ sd
+    j = 3 .* sd
+    k = 7 .* sd
+    println(Crayon(foreground = k, background = i), "   $name")
+    
+    for line in 1:10
+        println(Crayon(foreground = j, background = i), "   $(name^12)")
+    end
+    for gap in 1:2
+        println(Crayon( foreground =(180, 185, 185),  background =(185, 185, 185)), " ")
+    end
+end
+rc() = Char(rand(UInt)%26 + 97)
+r3c() = rc() * rc() * rc()
+
+
+for boob in 1:100
+    s(r3c())
+end
+
+
 ```

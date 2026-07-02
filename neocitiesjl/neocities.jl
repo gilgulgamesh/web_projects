@@ -4,7 +4,10 @@ default() = include(conf_path)
 default()
 # include("neocities_config.jl")
 
-
+function myrun(x)
+    println(x)
+    run(x; wait=WAIT)
+end
 
 # set paths separately from newname.
 # root = _root  expanduser(_root)
@@ -15,25 +18,25 @@ function upload(files, newname=nothing; site=SITE)
         if isnothing(newname)
             newname = files
         end
-        filestring =  ```-F "$newname=@$ROOT/$files"```
+        filestring =  ```-F "$newname=@$ROOT$files"```
         # @show filestring typeof(filestring)
     else
         filelist = []
         for i in files
             push!(filelist, `-F `)
-            push!(filelist,  `$newname$i=@$ROOT/$i`)
+            push!(filelist,  `$newname$i=@$ROOT$i`)
         end
         filestring = join(filestring)
     end
-    global SHELL, PASS, ROOT, WAIT
-    run(`$SHELL curl -u "$site:$PASS" $filestring "https://neocities.org/api/upload"`; wait=WAIT)
+    global SHELL, PASS, WAIT
+    myrun(`$SHELL curl -u "$site:$PASS" $filestring "https://neocities.org/api/upload"` )
     return
 
 end
 
 function mkdir(path; site=SITE)
     global SHELL, PASS, WAIT
-    run(`$SHELL curl -u "$site:$PASS" -d "path=$path" "https://neocities.org/api/create_directory"`, wait=WAIT)
+    myrun(`$SHELL curl -u "$site:$PASS" -d "path=$path" "https://neocities.org/api/create_directory"` )
     return
 
 end
@@ -49,7 +52,7 @@ function rm(files, prefix=nothing; site=SITE)
         end
     end
     global SHELL, PASS, WAIT
-    run(`$SHELL curl -u "$site:$PASS" $delfiles "https://neocities.org/api/delete"`, wait=WAIT)
+    myrun(`$SHELL curl -u "$site:$PASS" $delfiles "https://neocities.org/api/delete"` )
     return
 
 end
@@ -61,14 +64,14 @@ function ls(path=nothing; site=SITE)
     else
         fullpath = "?path=$path"
     end
-    run(`curl -u "$site:$PASS" "https://neocities.org/api/list$fullpath"`, wait=WAIT)
+    myrun(`curl -u "$site:$PASS" "https://neocities.org/api/list$fullpath"`)
 
 end
 
 function info(site=SITE)
     global SHELL, PASS, WAIT
 
-    run(`curl "https://neocities.org/api/info?sitename=$site"`, wait=WAIT)
+    myrun(`curl "https://neocities.org/api/info?sitename=$site"` )
 
 end
 # """

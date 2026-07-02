@@ -1,10 +1,7 @@
 using Dates
 
-HTML_FILE = "pimkossible/posts.html"
-banner = "Feng Shui of Blog"
-TSV_FILE = "pimkossible/private/posts.tsv"
-EVIL_TSV_FILE = "pimkossible/private/EVILposts.tsv"
 
+banner = "Feng Shui of Blog"
 function cutedate(dt)
     typeof(dt) == String && return dt
     a = Dates.format(dt, "p-d-u'yy") # use time of day to get 🌇🏙️🌆 or smn
@@ -30,8 +27,12 @@ function addpost!(postbody::String)
     if row[2:end] == prior[end, 2:end] || row[2:end] == evilprior[end, 2:end]
         return Response(Plain, "we got it last time babes", status=400)
     end
-    saverow(row, makesafe(row))
+    saferow = makesafe(row)
+    saverow(row, saferow)
+    println("wrote $row and $saferow to $TSV_FILE, $EVIL_TSV_FILE")
     updatehtml()
+    println("updated $HTML_FILE")
+    println("upload to $SITE_LOC")
     sendwait()
 end
 
@@ -76,7 +77,7 @@ function saverow(row::Vector,  saferow::Vector)
 end
 
 @tags html head meta body style h1 h2 h4 span  link
-@tags_noescape div article section iframe#can this possible work recursively with stock.. .
+@tags_noescape div article section iframe video a#can this possible work recursively with stock.. .
 function updatehtml()
     data, headerrow  = readdlm(TSV_FILE, '\t', String, header=true)
     allposts = []

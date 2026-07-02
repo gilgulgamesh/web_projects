@@ -2,6 +2,13 @@ using Mongoose
 using Dates
 include("parser.jl")
 include("neocitiesjl/neocities.jl")
+#root is within kimpossible
+HTML_FILE = "pimkossible/private/posts.html"
+TSV_FILE = "pimkossible/private/posts.tsv"
+EVIL_TSV_FILE = "pimkossible/private/EVILposts.tsv"
+SITE_LOC = "index.html"
+redirect_loc = "redirect.html"
+
 
 getdate() =  replace(string(Dates.now()), "T" => " at ")
 restarted = false
@@ -29,7 +36,7 @@ function wraplog!(req)
    f = "\n   $(getdate()) \n   "
    out = *(a, b, c, d, e, f)
    write(LOG, out)
-   print(out)
+   # print(out)
    Response(Plain, "404 Not Found"; status=404)
 end
 
@@ -78,7 +85,8 @@ start!(server; host="0.0.0.0", port=8080, blocking=false)
 
 
 function sendwait()
-    upload("HTML_FILE", "desocialize.html")
+    upload(HTML_FILE, SITE_LOC)
+    println("reached here")
     #add limiter
     Response(Html, read("redirect.html", String); status=200)
 

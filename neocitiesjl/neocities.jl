@@ -1,8 +1,8 @@
 
 conf_path = string(@__DIR__) * "/neocities_config.jl"
 default() = include(conf_path)
-default()
-# include("neocities_config.jl")
+# default()
+include("neocities_config.jl")
 
 function myrun(x)
     println(x)
@@ -11,7 +11,7 @@ end
 
 # set paths separately from newname.
 # root = _root  expanduser(_root)
-
+@tags
 function upload(files, newname=nothing; site=SITE)
 
     if files isa AbstractString
@@ -28,15 +28,15 @@ function upload(files, newname=nothing; site=SITE)
         end
         filestring = join(filestring)
     end
-    global SHELL, PASS, WAIT
-    myrun(`$SHELL curl -u "$site:$PASS" $filestring "https://neocities.org/api/upload"` )
+    global PASS
+    myrun(`curl -u "$site:$PASS" $filestring "https://neocities.org/api/upload"` )
     return
 
 end
 
 function mkdir(path; site=SITE)
-    global SHELL, PASS, WAIT
-    myrun(`$SHELL curl -u "$site:$PASS" -d "path=$path" "https://neocities.org/api/create_directory"` )
+    global PASS
+    myrun(`curl -u "$site:$PASS" -d "path=$path" "https://neocities.org/api/create_directory"` )
     return
 
 end
@@ -51,13 +51,13 @@ function rm(files, prefix=nothing; site=SITE)
             push!(delfiles, """ "filenames[]=$prefix$i" """)
         end
     end
-    global SHELL, PASS, WAIT
-    myrun(`$SHELL curl -u "$site:$PASS" $delfiles "https://neocities.org/api/delete"` )
+    global PASS
+    myrun(`curl -u "$site:$PASS" $delfiles "https://neocities.org/api/delete"` )
     return
 
 end
 function ls(path=nothing; site=SITE)
-    global SHELL, PASS, WAIT
+    global PASS
 
     if isnothing(path)
         fullpath = ""
@@ -69,10 +69,7 @@ function ls(path=nothing; site=SITE)
 end
 
 function info(site=SITE)
-    global SHELL, PASS, WAIT
-
     myrun(`curl "https://neocities.org/api/info?sitename=$site"` )
-
 end
 # """
 # Note, filepath starts from your directory

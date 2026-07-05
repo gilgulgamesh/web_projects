@@ -22,22 +22,26 @@ function addpost!(postbody::String)
     evilprior = readdlm(EVIL_TSV_FILE, '\t', String)
     columns =  size(prior, 1) # including header  does +1 (1 arg is dims)
     row = makerow(postbody, columns)
-    row = replace.(row,'+' => ' ') #figure out why this is broken?
+
+    row = replace.(row,'+' => ' ', "&lt;" => '<', "&gt;" => '>') #figure out why this is broken?
     row = unescapeuri.(row)
     if row[2:end] == prior[end, 2:end] || row[2:end] == evilprior[end, 2:end]
         return Response(Plain, "we got it last time babes", status=400)
     end
     saferow = makesafe(row)
     saverow(row, saferow)
-    println("wrote $row and $saferow to $TSV_FILE, $EVIL_TSV_FILE")
+
+    println(" $EVIL_TSV_FILE: \n$row \n $TSV_FILE:\n$saferow  , ")
     updatehtml()
-    println("updated $HTML_FILE")
-    println("upload to $SITE_LOC")
+    println("updated $HTML_FILE, sending to $SITE_LOC")
     sendwait()
 end
 
 function makerow(postbody::String, columns::Int)
-    title, user, content = match(r"Title=(.+)&User=(.+)&Content=(.+)", postbody).captures
+
+    title, user, content, tags = match(r"Title=(.+)?&User=(.+)&Content=(.+)&Tags=(.+)?", postbody).captures
+    isnothing(title) ? title = "" : nothing
+    isnothing(tags) ? tags = "" : nothing
     date = cutedate(Dates.now())
     user = uppercase(user[1]) * lowercase(user[2:end])
     postnumber = "#$columns"
@@ -47,66 +51,100 @@ function makerow(postbody::String, columns::Int)
         user
         date
         content
+        tags
     ]
+
+
 end
 
 function makesafe(row::Vector)
     # upgrade to dompurify
     # consider limiting the limited one more for sanity
     saferow::Vector = [
-        sanitize(row[1], whitelist = HTMLSanitizer.LIMITED)
-        sanitize(row[2], whitelist = HTMLSanitizer.LIMITED)
-        sanitize(row[3], whitelist = HTMLSanitizer.LIMITED)
-        sanitize(row[4], whitelist = HTMLSanitizer.LIMITED)
+        sanitize.(row[1:4], whitelist = HTMLSanitizer.LIMITED)
         sanitize(row[5], whitelist = HTMLSanitizer.WHITELIST)
+        sanitize(row[6], whitelist = HTMLSanitizer.LIMITED)
     ]
 end
 
-
 function saverow(row::Vector,  saferow::Vector)
-    io1 = open(TSV_FILE,  "a")
-    writedlm(io1, permutedims(saferow), '\t')
-    close(io1)
-
     if row != saferow
-        println("UNSAFE POST CENSORED")
+        # @show row saferow
+        println("UNSAFE POST CENSORED see $EVIL_TSV_FILE \n $row \n $saferow")
         io2 = open(EVIL_TSV_FILE,  "a")
         writedlm(io2, permutedims(row), '\t')
         close(io2)
+        saferow[6] =  saferow[6] * " unverified"
+        println(saferow)
     end
+    io1 = open(TSV_FILE,  "a")
+    writedlm(io1, permutedims(saferow), '\t')
+    close(io1)
 end
 
-@tags html head meta body style h1 h2 h4 span  link
-@tags_noescape div article section iframe video a#can this possible work recursively with stock.. .
+
+const html = m("html")
+const head = m("head")
+const meta = m("meta")
+const body = m("body")
+const style = m("style")
+const h1 = m("h1")
+const h2 = m("h2")
+const h4 = m("h4")
+const spanlink = m("spanlink")
+const article = m("article")
+const section = m("section")
+const iframe = m("iframe")
+const video = m("video")
+const a = m("a")
+const span = m("span")
+const div = m("div")
+const sub = m("sub")
+
+
+const link = m("link")#can this possible work recursively with stock.. .
+
+
 function updatehtml()
     data, headerrow  = readdlm(TSV_FILE, '\t', String, header=true)
     allposts = []
 
     for i in 1:size(data, 1)
-        d = reverse(data, dims=1)[i, 1:5]
+        d = reverse(data, dims=1)[i, 1:6]
         push!(allposts, postbox(d))
     end
 
-    w = string(Pretty(docubox(allposts)))
-    r = replace(w,
+    htmlposts = replace(string(Pretty(docubox(allposts))),
         "<html><html>" => "<html>",
 
         "</html></html>" => "</html>" )
-    write(HTML_FILE, r)
+    write(HTML_FILE, htmlposts)
 end
 #omfg i just want to cat, save, flip save flip cat. file systems are not arrays. good for personal things.
+#format
+NUMBER  = 1
+TITLE  = 2
+USER  = 3
+DATE  = 4
+CONTENT = 5
+TAGS = 6
+
+
 
 const postbox(row) =
-article(id=row[1][2:end], #shoulda kept it without the # but ugh
+article(id=row[NUMBER][2:end], #shoulda kept it without the # but ugh
     h2.heading(
-        span(row[1] * " "),
-        span.Title(row[2])
+        span.Title(row[TITLE])
     ),
     h4.subheading(
-        span.User(row[3]),
-        span(" " * cutedate(row[4]))
+        span(" " * cutedate(row[DATE]))
     ),
-    div.Content(row[5])
+    div.Content(row[CONTENT]),
+    div.bottom(
+        span.User('>' * row[USER]),
+        span.Tags('>' * row[NUMBER], join(" >" .* split(row[TAGS]))
+        ),
+    )
 )
 
 const docubox(allposts) =
@@ -120,7 +158,7 @@ html(
             "&nbsp;&nbsp;&nbsp;",
             a(href="build/post-editor.html", "Post Editor"),
             iframe(id="status",
-                src="https://content-edible.org/status.html"; style="height:2.3rem; width: 4ch; border;0px solid; float:inline-end"
+                src="https://content-edible.org/status.html";
             )
 
         ),

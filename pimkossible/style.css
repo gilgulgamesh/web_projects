@@ -21,30 +21,45 @@
 
 
 :root {
-   --dark-green: hsl(80, 80%, 12%);
-   --vivid-green: hsl(99.43, 70%, 30%);
-   --link-green: hsl(99.43, 52.24%, 40.27%);
-   --faded-green: hsl(96, 26%, 73%);
-   --light-green: hsl(105, 13%, 74%);
-   --article-bg-green: hsl(100, 15%, 80%);
+   --dark-pim:rgb(45, 24, 36);
+   /*hsl(80, 80%, 12%);*/
+   --vivid-pim:rgb(105, 56, 84);
+   /*hsl(99.43, 70%, 30%);*/
+   --link-pim: rgb(105, 56, 84);
+   /*hsl(99.43, 52.24%, 40.27%);*/
+   --faded-pim: hsl(96, 0%, 73%);
+   /*--faded-pim: hsl(96, 26%, 73%);*/
+
+   --light-grey:rgb(175, 175, 175);
+   /*hsl(105, 13%, 74%);*/
+   --article-bg-pim: rgb(190, 183, 187);
+   --article-bg-grey: hsl(90, 0%, 80%);
+   /*--editor-bg-green: hsl(90, 13%, 80%);*/
+
+
+   /*hsl(100, 15%, 80%);*/
+}
+
+.Tags, .User, .date  {
+        color: var(--vivid-pim);
 }
 
 body {
-   background-color: var(--light-green);
+   background-color: var(--light-grey);
    font-family: "Verdana", "Helvetica", sans-serif;
    font-weight: Normal ;
-   color: var(--dark-green);
+   color: var(--dark-pim);
    line-height:145%
 
 }
 
 a {
-   color:var(--link-green);
+   color:var(--link-pim);
    text-decoration: none;
 }
 
 b {
-   color:var(--vivid-green);
+   color:var(--vivid-pim);
 }
 
 #posts {
@@ -54,7 +69,7 @@ b {
 
 article {
     max-width: min(50ch, 95vw);
-   background-color: var(--article-bg-green);
+   background-color: var(--article-bg-pim);
    margin:auto;
    margin-bottom: 60px;
    margin-top: 30px;
@@ -112,4 +127,11 @@ h1 {
     font-family: Papyrus;
    padding-top: 15px;
    padding-left: 10px;
+}
+
+#status {
+    height: 2.3rem;
+    width: 4ch;
+    border: 0px solid;
+    float: inline-end
 }

@@ -1,5 +1,6 @@
 using Mongoose
 using Dates
+import Mongoose
 include("parser.jl")
 include("neocitiesjl/neocities.jl")
 #root is within kimpossible
@@ -27,6 +28,7 @@ else
     write(LOG, "\nTurned on $(getdate())")
 end
 
+# real code here
 function wraplog!(req)
    a = "\n   $(req.method) -> $(req.uri)"
    b = "\n   ------"
@@ -36,7 +38,7 @@ function wraplog!(req)
    f = "\n   $(getdate()) \n   "
    out = *(a, b, c, d, e, f)
    write(LOG, out)
-   # print(out)
+   print(f)
    Response(Plain, "404 Not Found"; status=404)
 end
 
@@ -44,36 +46,33 @@ end
 router = Router()
 route!(router, :post, "/", req-> begin
     wraplog!(req)
-    if match(r"Title=(.+)&User=(.+)&Content=(.+)", req.body) === nothing
+    if match(r"Title=(.+)?&User=(.+)&Content=(.+)&Tags=(.+)?", req.body) === nothing
         return Response(Plain, "Bad HTTP formatting"; status=400)
     end
-    # try
-        addpost!(req.body)
-    # catch
-    #     Response(Plain, "something went wrong"; status=400)
-    # end
+    addpost!(req.body)
 end)
+
 route!(router, :get, "/status.html", req -> begin
     wraplog!(req)
     Response(Html, read("pimkossible/status.html", String); status=200)
 end)
 
-
-
-
-route!(router, :get, "/", req -> wraplog!(req))
-route!(router, :put, "/", req -> wraplog!(req))
-route!(router, :delete, "/", req -> wraplog!(req))
-route!(router, :patch, "/", req -> wraplog!(req))
-route!(router, :head, "/", req -> wraplog!(req))
-route!(router, :options, "/", req -> wraplog!(req))
-route!(router, :get, "*", req -> wraplog!(req))
-route!(router, :put, "*", req -> wraplog!(req))
-route!(router, :patch, "*", req -> wraplog!(req))
-route!(router, :delete, "*", req -> wraplog!(req))
-route!(router, :head, "*", req -> wraplog!(req))
-route!(router, :options, "*", req -> wraplog!(req))
-route!(router, :post, "*", req -> wraplog!(req))
+function logALL()
+    route!(router, :get, "/", req -> wraplog!(req))
+    route!(router, :put, "/", req -> wraplog!(req))
+    route!(router, :delete, "/", req -> wraplog!(req))
+    route!(router, :patch, "/", req -> wraplog!(req))
+    route!(router, :head, "/", req -> wraplog!(req))
+    route!(router, :options, "/", req -> wraplog!(req))
+    route!(router, :get, "*", req -> wraplog!(req))
+    route!(router, :put, "*", req -> wraplog!(req))
+    route!(router, :patch, "*", req -> wraplog!(req))
+    route!(router, :delete, "*", req -> wraplog!(req))
+    route!(router, :head, "*", req -> wraplog!(req))
+    route!(router, :options, "*", req -> wraplog!(req))
+    route!(router, :post, "*", req -> wraplog!(req))
+end
+logALL()
 
 config = Config(max_body=5_242_880)
 server = Server(router, config)
@@ -86,7 +85,7 @@ start!(server; host="0.0.0.0", port=8080, blocking=false)
 
 function sendwait()
     upload(HTML_FILE, SITE_LOC)
-    println("reached here")
+    println("uploaded to $SITE_LOC")
     #add limiter
     Response(Html, read("redirect.html", String); status=200)
 

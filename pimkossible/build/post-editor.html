@@ -9,20 +9,20 @@
 
     <link href="../style.css" rel="stylesheet" type="text/css" media="all">
     <style>
-        :root {
+        /*:root {
             --vivid-green: hsl(99.43, 70%, 30%);
-            --faded-green: hsl(96, 26%, 73%);
-        }
+            --faded-pim: hsl(96, 26%, 73%);
+        }*/
 
         body {
-            background-color: hsl(90, 13%, 80%);
+            background-color:var(--article-bg-grey);
             color: rgba(0, 0, 0, 0.7);
             font-size: 1rem;
             font-family: "verdana" !important;
         }
 
         b {
-            color: var(--vivid-green);
+            color: var(--vivid-pim);
             /*font-weight: bold;*/
             font-size: 133%;
             line-height: 0.5;
@@ -33,7 +33,7 @@
         }
 
         [contenteditable] {
-            background-color: var(--faded-green);
+            background-color: var(--faded-pim);
             display: inline;
             white-space: normal;
             min-width: 30ch;
@@ -47,7 +47,7 @@
         [contenteditable]:focus {
             padding: 6px;
             outline: none;
-            /*background-color: var(--faded-green);*/
+            /*background-color: var(--faded-pim);*/
         }
 
         [contenteditable]:empty::before {
@@ -57,7 +57,7 @@
         }
 
         [contenteditable]:focus:empty::before {
-            color: var(--faded-green);
+            color: var(--faded-pim);
         }
 
         #Title-field:empty::before {
@@ -138,7 +138,8 @@
             top: 0;
             left: 0;
             margin: 0;
-            background-color: rgba(182, 204, 168, 0.68);
+            /*background-color: rgba(326, 204, 168, 0.68);*/
+            background-color:hsla(326, 22%, 73%, 0.68);
             width: 98%;
             height: fit-content;
 
@@ -210,16 +211,16 @@
    &lt;/head&gt;
    &lt;body&gt;
       &lt;section id=posts&gt;</section>
-<section class="code" id=body-code>         &lt;article class=post&gt;
+<section class="code" id=body-code>         &lt;article&gt;
             &lt;h2 class=<b>Title</b>&gt;<div class=edible contenteditable=true id="Title-field" onblur="ReplaceShit()"></div>&lt;/h2&gt;
-            &lt;h4 class=subtitle&gt;
-               &lt;span class=<b>User</b>&gt;<span class=edible contenteditable=true id="User-field" onblur="ReplaceShit()"></span>&lt;/span&gt;
-               &lt;span class=date&gt;$day-$month-$year&lt;/span&gt;
-            &lt;/h4&gt;
+            &lt;h4 class=date&gt;dd-mmm'yy&lt;/h4&gt;
+            &lt;div&gt;&lt;a class=<b>User</b>&gt;<span class=edible contenteditable=true id="User-field" onblur="ReplaceShit()"></span>&lt;/a&gt;
+               &lt;a class=<b>Tags</b>&gt;<div class=edible contenteditable=true id="Tags-field" onblur="ReplaceShit()"></div>&lt;/a&gt;
+            &lt;/div&gt;
             &lt;div class=<b>Content</b>&gt;<div onblur="ReplaceShit()" class=edible contenteditable=true
                   id="Content-field">
 
-</div>             &lt;/div&gt;
+</div>            &lt;/div&gt;
          &lt;/article&gt;</section>     <section class="code" id=footer-code>      &lt;/section&gt;
       &lt;script&gt; <div id=buttons>
                     <button onclick="adda(bold)" type=button>&lt;b&gt;<span
@@ -228,7 +229,7 @@
                     <button onclick="adda(h2)" type=button>&lt;h2&gt;<span display:inline
                             style="font-size: large">Big2</span>&lt;/h2&gt;</button>
                     <button onclick="adda(alink)" type=button>&lt;a&gt;<span
-                            style="text-decoration: underline;color: #3c8218">a link</span>&lt;a&gt;</button>
+                            style="text-decoration: underline;color: var(--link-pim)">a link</span>&lt;a&gt;</button>
                 </div>      &lt;/script&gt;
    &lt;/body&gt;
 &lt;/html&gt;
@@ -244,8 +245,9 @@
             <input class="secret" type="text"  id="titleBox" name="Title">
              <input class="secret" type="text" id="userBox" name="User">
              <input class="secret" type="text" id="contentBox" name="Content">
+             <input class="secret" type="text" id="tagsBox" name="Tags">
 
-            <input style="background-color: var(--vivid-green);color: white;" type="submit" value="Submit"> <!-- hardbake these in lol it's for poor ppl -->
+            <input style="background-color: var(--vivid-pim);color: white;" type="submit" value="Submit"> <!-- hardbake these in lol it's for poor ppl -->
          </form>
 
             <iframe id="status" src="https://content-edible.org/status.html" style="height:2.3rem; width: 5rem; border;0px solid; display:inline"></iframe>
@@ -266,6 +268,8 @@ function ReplaceShit() {
    var title = document.getElementById("Title-field")
   var user = document.getElementById("User-field")
    var content = document.getElementById("Content-field")
+   var tags = document.getElementById("Tags-field")
+
 
   var preview = document.getElementById("preview");
   var previewWindow = document.getElementById("preview-window");
@@ -274,6 +278,8 @@ function ReplaceShit() {
   var titleBox = document.getElementById("titleBox")
   var userBox = document.getElementById("userBox")
   var contentBox = document.getElementById("contentBox")
+  var tagsBox = document.getElementById("tagsBox")
+
 
   preview.srcdoc =   "<head><meta charset=UTF-8 /><link rel=stylesheet href=https://pimkossible.neocities.org/style.css /></head><body style=background-color:transparent><section id=posts >" + content.innerText + "</section></body></html>";
   // previewWindow.scrollTo(0, top);
@@ -284,6 +290,8 @@ function ReplaceShit() {
   titleBox.value = title.innerHTML
   userBox.value = user.innerHTML
   contentBox.value = content.innerHTML
+  tagsBox.value = tags.innerHTML
+
 
 
 

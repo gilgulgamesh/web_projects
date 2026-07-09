@@ -87,7 +87,8 @@ article {
    margin-top: 0px;
 
    margin-bottom: 0px;
-   padding-top:0px
+   padding-top:0px;
+   color:var(--vivid-pim)
    /*[]-top: 100px*/
 }
 
@@ -125,13 +126,19 @@ article {
 
 h1 {
     font-family: Papyrus;
-   padding-top: 15px;
-   padding-left: 10px;
+    padding-left: 40px;
+    display: inline-block;
 }
 
 #status {
+    float: inline-end;
+}
+#status iframe {
     height: 2.3rem;
-    width: 4ch;
+    width: 7rem;
     border: 0px solid;
-    float: inline-end
+    display:inline;
+    align-items: right;
+    margin-top: 10px;
+    margin-left: 15px;
 }

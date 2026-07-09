@@ -38,7 +38,7 @@ function wraplog!(req)
    f = "\n   $(getdate()) \n   "
    out = *(a, b, c, d, e, f)
    write(LOG, out)
-   print(f)
+   println(f, c)
    Response(Plain, "404 Not Found"; status=404)
 end
 
@@ -54,7 +54,7 @@ end)
 
 route!(router, :get, "/status.html", req -> begin
     wraplog!(req)
-    Response(Html, read("pimkossible/status.html", String); status=200)
+    Response(Html, read("status.html", String); status=200)
 end)
 
 function logALL()

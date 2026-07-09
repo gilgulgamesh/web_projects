@@ -22,9 +22,12 @@ function addpost!(postbody::String)
     evilprior = readdlm(EVIL_TSV_FILE, '\t', String)
     columns =  size(prior, 1) # including header  does +1 (1 arg is dims)
     row = makerow(postbody, columns)
+    row = replace.(row, '+' => ' ')
 
-    row = replace.(row,'+' => ' ', "&lt;" => '<', "&gt;" => '>') #figure out why this is broken?
     row = unescapeuri.(row)
+    # println("after escape", row)
+    row = replace.(row, "&lt;" => '<', "&gt;" => '>', "&amp;" => '&',  ) #enough?
+    # println("after replace",row)
     if row[2:end] == prior[end, 2:end] || row[2:end] == evilprior[end, 2:end]
         return Response(Plain, "we got it last time babes", status=400)
     end
@@ -75,7 +78,6 @@ function saverow(row::Vector,  saferow::Vector)
         writedlm(io2, permutedims(row), '\t')
         close(io2)
         saferow[6] =  saferow[6] * " unverified"
-        println(saferow)
     end
     io1 = open(TSV_FILE,  "a")
     writedlm(io1, permutedims(saferow), '\t')
@@ -154,13 +156,13 @@ html(
         link(rel="stylesheet", href="style.css"),
     ),
     body(
-        h1(id="banner", banner,
-            "&nbsp;&nbsp;&nbsp;",
-            a(href="build/post-editor.html", "Post Editor"),
-            iframe(id="status",
-                src="https://content-edible.org/status.html";
-            )
-
+        div(id="banner",
+            h1(banner),
+            h1(a(href="build/post-editor.html", "Post Editor")),
+            div(id="status",
+                h1("online?"),
+                iframe(src="https://content-edible.org/status.html";)
+            ),
         ),
         section(id="posts",
             allposts,

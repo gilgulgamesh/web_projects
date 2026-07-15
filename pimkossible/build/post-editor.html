@@ -167,11 +167,13 @@
         }
 
         button:hover {
-            background-color: #ffffff;
+            /*background-color: #ffffff !important;*/
+            opacity:0.8 ;
         }
 
         button:active {
-            background-color: rgba(0, 0, 0, 0.07);
+            /*background-color: #bababa !important;*/
+            opacity:0.5 ;
         }
 
         button:after ~ #footer-code {
@@ -223,12 +225,12 @@
 </div>            &lt;/div&gt;
          &lt;/article&gt;</section>     <section class="code" id=footer-code>      &lt;/section&gt;
       &lt;script&gt; <div id=buttons>
-                    <button onclick="adda(bold)" type=button>&lt;b&gt;<span
+                    <button id ="bold" onclick="adda(bold)"  type=button>&lt;b&gt;<span
                             style="font-weight: bold">bold</span>&lt;/b&gt;</button>
-                    <button  style="font-family:Times New Roman;font-weight:bold" onclick="adda(italic)" type=button><i>&lt;i&gt;italic&lt;/i&gt;</i></button>
-                    <button onclick="adda(h2)" type=button>&lt;h2&gt;<span display:inline
+                    <button id ="italic"  style="font-family:Times New Roman;font-weight:bold" onclick="adda(italic)"  type=button><i>&lt;i&gt;italic&lt;/i&gt;</i></button>
+                    <button id ="h2" onclick="adda(h2)"  type=button>&lt;h2&gt;<span display:inline
                             style="font-size: large">Big2</span>&lt;/h2&gt;</button>
-                    <button onclick="adda(alink)" type=button>&lt;a&gt;<span
+                    <button id ="alink" onclick="adda(alink)"  type=button>&lt;a&gt;<span
                             style="text-decoration: underline;color: var(--link-pim)">a link</span>&lt;a&gt;</button>
                 </div>      &lt;/script&gt;
    &lt;/body&gt;
@@ -298,39 +300,52 @@ function ReplaceShit() {
 }
 function AlignProperly() {
   var previewWindow = document.getElementById("preview");
-}
+};
 // buttons
 //
 
 const content = document.getElementById("Content-field");
 
 const bold = {
+element: document.getElementById("bold"),
     open: false,
     start: "<b>",
     end: "</b>"
 };
 const italic = {
+element: document.getElementById("italic"),
     open: false,
     start: "<i>",
     end: "</i>"
 };
 const h2 = {
+element: document.getElementById("h2"),
     open: false,
     start: "<h2>",
     end: "</h2>"
 };
 const alink = {
+element: document.getElementById("alink"),
     open: false,
-    start: "<a href=PasteYourLink'Ere>",
+    start: '<a href="PasteYourLinkHere">',
     end: "</a>"
 };
+const imglink = {
+element: document.getElementById("imglink"),
 
+    open: false,
+    start: '<img src="PasteYourLinkHere">',
+    end: '"AltTextPlease"</img>'
+};
 
 function adda(x) {
     if (!x.open) {
         content.append(x.start);
+        x.element.style.backgroundColor = "hsla(326, 22%, 73%, 0.68)";
     } else {
         content.append(x.end);
+        x.element.style.backgroundColor = "rgba(255, 255, 255, 0.81)  ";
+
     };
     x.open = !x.open;
      setEndOfContenteditable(content);

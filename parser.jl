@@ -1,5 +1,6 @@
 using Dates
 
+using DelimitedFiles, HTMLSanitizer, Hyperscript, URIs #my fork
 
 banner = "Feng Shui of Blog"
 function cutedate(dt)
@@ -13,17 +14,16 @@ function cutedate(dt)
         "aug" => "august",
         "sep" => "sept"
     )
+    c
 end
 
-using DelimitedFiles, HTMLSanitizer, Hyperscript, URIs #my fork
 
 function addpost!(postbody::String)
-    prior = readdlm(TSV_FILE, '\t', String)
-    evilprior = readdlm(EVIL_TSV_FILE, '\t', String)
-    columns =  size(prior, 1) # including header  does +1 (1 arg is dims)
-    row = makerow(postbody, columns)
+    prior,_ = readdlm(TSV_FILE, '\t', String, header=true)
+    evilprior,_ = readdlm(EVIL_TSV_FILE, '\t', String, header=true)
+    rowcount =  size(prior, 1)
+    row = makerow(postbody, rowcount)
     row = replace.(row, '+' => ' ')
-
     row = unescapeuri.(row)
     # println("after escape", row)
     row = replace.(row, "&lt;" => '<', "&gt;" => '>', "&amp;" => '&',  ) #enough?
@@ -35,19 +35,18 @@ function addpost!(postbody::String)
     saverow(row, saferow)
 
     println(" $EVIL_TSV_FILE: \n$row \n $TSV_FILE:\n$saferow  , ")
-    updatehtml()
+    updatehtml(TSV_FILE)
     println("updated $HTML_FILE, sending to $SITE_LOC")
     sendwait()
 end
 
-function makerow(postbody::String, columns::Int)
-
+function makerow(postbody::String, rowcount::Int)
     title, user, content, tags = match(r"Title=(.+)?&User=(.+)&Content=(.+)&Tags=(.+)?", postbody).captures
     isnothing(title) ? title = "" : nothing
     isnothing(tags) ? tags = "" : nothing
     date = cutedate(Dates.now())
     user = uppercase(user[1]) * lowercase(user[2:end])
-    postnumber = "#$columns"
+    postnumber = "#$(rowcount + 1)"
     row::Vector = [
         postnumber
         title
@@ -56,8 +55,6 @@ function makerow(postbody::String, columns::Int)
         content
         tags
     ]
-
-
 end
 
 function makesafe(row::Vector)
@@ -99,6 +96,7 @@ const section = m("section")
 const iframe = m("iframe")
 const video = m("video")
 const a = m("a")
+const at(x) = a(x, href="t/$x")
 const span = m("span")
 const div = m("div")
 const sub = m("sub")
@@ -107,16 +105,16 @@ const sub = m("sub")
 const link = m("link")#can this possible work recursively with stock.. .
 
 
-function updatehtml()
-    data, headerrow  = readdlm(TSV_FILE, '\t', String, header=true)
+function updatehtml(infile)
+    rows,_  = readdlm(infile, '\t', String, header=true)
     allposts = []
 
-    for i in 1:size(data, 1)
-        d = reverse(data, dims=1)[i, 1:6]
+    for i in 1:size(rows, 1)
+        d = reverse(rows, dims=1)[i, 1:6]
         push!(allposts, postbox(d))
     end
 
-    htmlposts = replace(string(Pretty(docubox(allposts))),
+    htmlposts = replace(string(Pretty(docubox(allposts, infile))),
         "<html><html>" => "<html>",
 
         "</html></html>" => "</html>" )
@@ -131,10 +129,8 @@ DATE  = 4
 CONTENT = 5
 TAGS = 6
 
-
-
 const postbox(row) =
-article(id=row[NUMBER][2:end], #shoulda kept it without the # but ugh
+article(id=row[NUMBER][2:end], class=row[USER], #removes the #
     h2.heading(
         span.Title(row[TITLE])
     ),
@@ -143,17 +139,18 @@ article(id=row[NUMBER][2:end], #shoulda kept it without the # but ugh
     ),
     div.Content(row[CONTENT]),
     div.bottom(
-        span.User('>' * row[USER]),
-        span.Tags('>' * row[NUMBER], join(" >" .* split(row[TAGS]))
+        a.User(row[USER], href="u/$(row[USER])"),
+        span.Tags(at(row[NUMBER]), at.(split(row[TAGS]))
         ),
     )
 )
 
-const docubox(allposts) =
+const docubox(allposts, infile) =
 html(
     head(
         meta(charset="UTF-8"),
         link(rel="stylesheet", href="style.css"),
+        style(makecss(infile))
     ),
     body(
         div(id="banner",

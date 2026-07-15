@@ -21,18 +21,18 @@
 
 
 :root {
-   --dark-pim:rgb(45, 24, 36);
+   /*--dark-pim:rgb(45, 24, 36);*/
    /*hsl(80, 80%, 12%);*/
    --vivid-pim:rgb(105, 56, 84);
    /*hsl(99.43, 70%, 30%);*/
-   --link-pim: rgb(105, 56, 84);
+   /*--link-pim: rgb(105, 56, 84);*/
    /*hsl(99.43, 52.24%, 40.27%);*/
    --faded-pim: hsl(96, 0%, 73%);
    /*--faded-pim: hsl(96, 26%, 73%);*/
 
    --light-grey:rgb(175, 175, 175);
    /*hsl(105, 13%, 74%);*/
-   --article-bg-pim: rgb(190, 183, 187);
+   /*--article-bg-pim: rgb(190, 183, 187);*/
    --article-bg-grey: hsl(90, 0%, 80%);
    /*--editor-bg-green: hsl(90, 13%, 80%);*/
 
@@ -48,18 +48,18 @@ body {
    background-color: var(--light-grey);
    font-family: "Verdana", "Helvetica", sans-serif;
    font-weight: Normal ;
-   color: var(--dark-pim);
+   /*color: var(--dark-pim);*/
    line-height:145%
 
 }
 
 a {
-   color:var(--link-pim);
-   text-decoration: none;
+   /*color:var(--link-pim);*/
+   /*text-decoration: none;*/
 }
 
 b {
-   color:var(--vivid-pim);
+   /*color:var(--vivid-pim);*/
 }
 
 #posts {
@@ -68,7 +68,7 @@ b {
 }
 
 article {
-    max-width: min(50ch, 95vw);
+    max-width: min(55ch, 95vw);
    background-color: var(--article-bg-pim);
    margin:auto;
    margin-bottom: 60px;
@@ -88,7 +88,7 @@ article {
 
    margin-bottom: 0px;
    padding-top:0px;
-   color:var(--vivid-pim)
+   /*color:var(--vivid-pim)*/
    /*[]-top: 100px*/
 }
 
@@ -141,4 +141,12 @@ h1 {
     align-items: right;
     margin-top: 10px;
     margin-left: 15px;
+}
+
+.bottom a {
+   margin-right: 1ch;}
+
+.Content img, .Content iframe {
+   max-width:100%;
+   min-height:auto
 }

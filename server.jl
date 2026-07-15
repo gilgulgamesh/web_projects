@@ -2,6 +2,7 @@ using Mongoose
 using Dates
 import Mongoose
 include("parser.jl")
+include("tagparser.jl")
 include("neocitiesjl/neocities.jl")
 #root is within kimpossible
 HTML_FILE = "pimkossible/private/posts.html"

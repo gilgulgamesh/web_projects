@@ -87,11 +87,22 @@ function s(name)
     i = (175, 175, 175) .+ sd
     j = 3 .* sd
     k = 7 .* sd
+    l = (30,30,30) .+ k
     println(Crayon(foreground = k, background = i), "   $name")
     
-    for line in 1:10
-        println(Crayon(foreground = j, background = i), "   $(name^12)")
-    end
+    # for line in 1:10
+        println(Crayon(foreground = j, background = i, underline=false), "   $(name^6)")
+        println(Crayon(foreground = j, background = i, underline=false), "   $(name^6)")
+        println(Crayon(foreground = j, background = i, underline=false), "   $(name^6)")
+        println(Crayon(foreground = j, background = i, underline=false), "   $(name^6)")
+        println(Crayon(foreground = l, background = i, underline=true), "   $(name^6)")
+        println(Crayon(foreground = j, background = i, underline=false), "   $(name^6)")
+        println(Crayon(foreground = j, background = i, underline=false), "   $(name^6)")
+        println(Crayon(foreground = j, background = i, underline=false), "   $(name^6)")
+        println(Crayon(foreground = j, background = i, underline=false), "   $(name^6)")
+        println(Crayon(foreground = j, background = i, underline=false), "   $(name^6)")
+        
+    # end
     for gap in 1:2
         println(Crayon( foreground =(180, 185, 185),  background =(185, 185, 185)), " ")
     end
@@ -100,7 +111,7 @@ rc() = Char(rand(UInt)%26 + 97)
 r3c() = rc() * rc() * rc()
 
 
-for boob in 1:100
+for boob in 1:10
     s(r3c())
 end
 

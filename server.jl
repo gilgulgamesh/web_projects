@@ -9,7 +9,8 @@ HTML_FILE = "pimkossible/private/posts.html"
 TSV_FILE = "pimkossible/private/posts.tsv"
 EVIL_TSV_FILE = "pimkossible/private/EVILposts.tsv"
 SITE_LOC = "index.html"
-redirect_loc = "redirect.html"
+REDIRECT_LOC = "redirect.html"
+
 
 
 getdate() =  replace(string(Dates.now()), "T" => " at ")
@@ -51,6 +52,7 @@ route!(router, :post, "/", req-> begin
         return Response(Plain, "Bad HTTP formatting"; status=400)
     end
     addpost!(req.body)
+    Response(Html, read(REDIRECT_LOC, String); status=200)
 end)
 
 route!(router, :get, "/status.html", req -> begin
@@ -84,10 +86,11 @@ plug!(server, logger())
 start!(server; host="0.0.0.0", port=8080, blocking=false)
 
 
-function sendwait()
-    upload(HTML_FILE, SITE_LOC)
-    println("uploaded to $SITE_LOC")
+function sendwait(html_file, site_loc)
+    upload(html_file, site_loc)
+    println("uploaded $html_file to $site_loc")
     #add limiter
-    Response(Html, read("redirect.html", String); status=200)
-
+    for u in keys(getuserposts())
+        upload("pimkossible/private/u/$u.html", "u/$u.html")
+    end
 end

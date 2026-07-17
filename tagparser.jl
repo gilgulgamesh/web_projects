@@ -19,18 +19,19 @@ const VIVID = 3
 const LINK = 4
 
 
-function gathercolors(infile)
-    prior = readdlm(infile, '\t', String)
+function gathercolors(users)
+
     colors = Dict()
-    for u in prior[2:end, USER]
+
+    for u in users
         get!(colors, u, pallete(u) )
     end
     colors
 end
 
 
-function makecss(infile)
-    colors = gathercolors(infile)
+function makecss(users)
+    colors = gathercolors(users)
     c = []
     for user in keys(colors)
         push!(c,

@@ -35,9 +35,23 @@ function addpost!(postbody::String)
     saverow(row, saferow)
 
     println(" $EVIL_TSV_FILE: \n$row \n $TSV_FILE:\n$saferow  , ")
-    updatehtml(TSV_FILE)
+    updatehtml()
     println("updated $HTML_FILE, sending to $SITE_LOC")
-    sendwait()
+    sendwait(HTML_FILE, SITE_LOC)
+end
+
+function formatuser(user)
+    alphabet = "abcdefghijklmopqrstuvwxyz"
+    tmp = ""
+    for c in user
+        if c in (alphabet * uppercase(alphabet))
+            new_c = c
+        else
+            new_c = ""
+        end
+        tmp *= new_c
+    end
+    user = uppercase(tmp[1]) * lowercase(tmp[2:end])
 end
 
 function makerow(postbody::String, rowcount::Int)
@@ -45,7 +59,7 @@ function makerow(postbody::String, rowcount::Int)
     isnothing(title) ? title = "" : nothing
     isnothing(tags) ? tags = "" : nothing
     date = cutedate(Dates.now())
-    user = uppercase(user[1]) * lowercase(user[2:end])
+    user = formatuser(user)
     postnumber = "#$(rowcount + 1)"
     row::Vector = [
         postnumber
@@ -81,6 +95,12 @@ function saverow(row::Vector,  saferow::Vector)
     close(io1)
 end
 
+NUMBER  = 1
+TITLE  = 2
+USER  = 3
+DATE  = 4
+CONTENT = 5
+TAGS = 6
 
 const html = m("html")
 const head = m("head")
@@ -104,30 +124,60 @@ const sub = m("sub")
 
 const link = m("link")#can this possible work recursively with stock.. .
 
+getrows() = readdlm(TSV_FILE, '\t', String, header=true)[1]
 
-function updatehtml(infile)
-    rows,_  = readdlm(infile, '\t', String, header=true)
-    allposts = []
+function getuserposts()
+    rows = getrows()
+    userposts = Dict()
+    for r in eachrow(rows)
+        a = get!(userposts, r[USER], [])
+        push!(a, r)
+    end
+    userposts
+end
 
+function updatehtml()
+    rows  = getrows()
+    tags = rows[1:end, TAGS]
+    userposts = getuserposts()
+
+    allboxed = []
     for i in 1:size(rows, 1)
         d = reverse(rows, dims=1)[i, 1:6]
-        push!(allposts, postbox(d))
+        push!(allboxed, postbox(d))
     end
 
-    htmlposts = replace(string(Pretty(docubox(allposts, infile))),
+    htmlposts = formathtml(allboxed, keys(userposts))
+    write(HTML_FILE, htmlposts)
+
+    for u in keys(userposts)
+        posts = userposts[u]
+        uboxed = []
+        for i in length(posts):-1:1
+            push!(uboxed, postbox(posts[i]))
+        end
+        # println(uboxed)
+        htmlposts = formathtml(uboxed, [u])
+        touch("pimkossible/private/u/$u.html")
+        write("pimkossible/private/u/$u.html", htmlposts)
+
+    end
+end
+
+#FILTERS
+function formathtml(allboxed, users)
+
+    htmlposts = replace(string(Pretty(docubox(allboxed, users))),
         "<html><html>" => "<html>",
 
         "</html></html>" => "</html>" )
-    write(HTML_FILE, htmlposts)
-end
+ end
+
+
+
+
 #omfg i just want to cat, save, flip save flip cat. file systems are not arrays. good for personal things.
 #format
-NUMBER  = 1
-TITLE  = 2
-USER  = 3
-DATE  = 4
-CONTENT = 5
-TAGS = 6
 
 const postbox(row) =
 article(id=row[NUMBER][2:end], class=row[USER], #removes the #
@@ -145,12 +195,12 @@ article(id=row[NUMBER][2:end], class=row[USER], #removes the #
     )
 )
 
-const docubox(allposts, infile) =
+const docubox(allboxed, users) =
 html(
     head(
         meta(charset="UTF-8"),
-        link(rel="stylesheet", href="style.css"),
-        style(makecss(infile))
+        link(rel="stylesheet", href="/style.css"),
+        style(makecss(users))
     ),
     body(
         div(id="banner",
@@ -162,7 +212,7 @@ html(
             ),
         ),
         section(id="posts",
-            allposts,
+            allboxed,
         ),
     ),
 )

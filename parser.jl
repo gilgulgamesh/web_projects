@@ -2,7 +2,7 @@ using Dates
 
 using DelimitedFiles, HTMLSanitizer, Hyperscript, URIs #my fork
 
-banner = "Feng Shui of Blog"
+bannertext = "Feng Shui of Blog"
 function cutedate(dt)
     typeof(dt) == String && return dt
     a = Dates.format(dt, "p-d-u'yy") # use time of day to get 🌇🏙️🌆 or smn
@@ -19,8 +19,8 @@ end
 
 
 function addpost!(postbody::String)
-    prior,_ = readdlm(TSV_FILE, '\t', String, header=true)
-    evilprior,_ = readdlm(EVIL_TSV_FILE, '\t', String, header=true)
+    prior,_ = readdlm(TSV_FILE, ' ', String, header=true)
+    evilprior,_ = readdlm(EVIL_TSV_FILE, ' ', String, header=true)
     rowcount =  size(prior, 1)
     row = makerow(postbody, rowcount)
     row = replace.(row, '+' => ' ')
@@ -33,11 +33,10 @@ function addpost!(postbody::String)
     end
     saferow = makesafe(row)
     saverow(row, saferow)
-
     println(" $EVIL_TSV_FILE: \n$row \n $TSV_FILE:\n$saferow  , ")
     updatehtml()
     println("updated $HTML_FILE, sending to $SITE_LOC")
-    sendwait(HTML_FILE, SITE_LOC)
+    sendwait()
 end
 
 function formatuser(user)
@@ -86,12 +85,12 @@ function saverow(row::Vector,  saferow::Vector)
         # @show row saferow
         println("UNSAFE POST CENSORED see $EVIL_TSV_FILE \n $row \n $saferow")
         io2 = open(EVIL_TSV_FILE,  "a")
-        writedlm(io2, permutedims(row), '\t')
+        writedlm(io2, permutedims(row), ' ')
         close(io2)
         saferow[6] =  saferow[6] * " unverified"
     end
     io1 = open(TSV_FILE,  "a")
-    writedlm(io1, permutedims(saferow), '\t')
+    writedlm(io1, permutedims(saferow), ' ')
     close(io1)
 end
 
@@ -124,7 +123,7 @@ const sub = m("sub")
 
 const link = m("link")#can this possible work recursively with stock.. .
 
-getrows() = readdlm(TSV_FILE, '\t', String, header=true)[1]
+getrows() = readdlm(TSV_FILE, ' ', String, header=true)[1]
 
 function getuserposts()
     rows = getrows()
@@ -166,15 +165,10 @@ end
 
 #FILTERS
 function formathtml(allboxed, users)
-
     htmlposts = replace(string(Pretty(docubox(allboxed, users))),
         "<html><html>" => "<html>",
-
         "</html></html>" => "</html>" )
  end
-
-
-
 
 #omfg i just want to cat, save, flip save flip cat. file systems are not arrays. good for personal things.
 #format
@@ -189,7 +183,7 @@ article(id=row[NUMBER][2:end], class=row[USER], #removes the #
     ),
     div.Content(row[CONTENT]),
     div.bottom(
-        a.User(row[USER], href="u/$(row[USER])"),
+        a.User(row[USER], href="/u/$(row[USER])"),
         span.Tags(at(row[NUMBER]), at.(split(row[TAGS]))
         ),
     )
@@ -203,9 +197,9 @@ html(
         style(makecss(users))
     ),
     body(
-        div(id="banner",
-            h1(banner),
-            h1(a(href="build/post-editor.html", "Post Editor")),
+        div(id="bannertext",
+            h1(a(bannertext, href="/")),
+            h1(a(href="/build/post-editor.html", "Post Editor")),
             div(id="status",
                 h1("online?"),
                 iframe(src="https://content-edible.org/status.html";)

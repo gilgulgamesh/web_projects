@@ -6,32 +6,39 @@ include("neocities_config.jl")
 
 function myrun(x)
     println(x)
-    run(x; wait=WAIT)
+    read(x)
 end
 
-# set paths separately from newname.
+# set paths separately from newfiles.
 # root = _root  expanduser(_root)
-@tags
-function upload(files, newname=nothing; site=SITE)
 
-    if files isa AbstractString
-        if isnothing(newname)
-            newname = files
-        end
-        filestring =  ```-F "$newname=@$ROOT$files"```
-        # @show filestring typeof(filestring)
-    else
-        filelist = []
-        for i in files
-            push!(filelist, `-F `)
-            push!(filelist,  `$newname$i=@$ROOT$i`)
-        end
-        filestring = join(filestring)
-    end
+function upload(files::AbstractString, newfiles=nothing; site=SITE, path="")
     global PASS
+    if isnothing(newfiles)
+        newfiles = files
+    end
+    filestring =  ```-F "$path$newfiles=@$ROOT$files"```
     myrun(`curl -u "$site:$PASS" $filestring "https://neocities.org/api/upload"` )
-    return
+end
 
+
+function upload(files, newfiles=nothing; site=SITE, path="")
+    filelist = []
+    global PASS
+    if files isa AbstractArray
+        for f in files
+            push!(filelist, "-F")
+            push!(filelist, "$path=@$ROOT$f")
+        end
+    elseif files isa Dict
+        for k in keys(files)
+            v = files[k]
+            push!(filelist, "-F")
+            push!(filelist, "$path$v=@$ROOT$k")
+        end
+    end
+    myrun(`curl -u "$site:$PASS" $filelist "https://neocities.org/api/upload"` )
+    return
 end
 
 function mkdir(path; site=SITE)

@@ -40,9 +40,6 @@
    /*hsl(100, 15%, 80%);*/
 }
 
-.Tags, .User, .date  {
-        color: var(--vivid-pim);
-}
 
 body {
    background-color: var(--light-grey);
@@ -53,14 +50,6 @@ body {
 
 }
 
-a {
-   /*color:var(--link-pim);*/
-   /*text-decoration: none;*/
-}
-
-b {
-   /*color:var(--vivid-pim);*/
-}
 
 #posts {
     /*max-width: 50ch;*/
@@ -143,7 +132,7 @@ h1 {
     margin-left: 15px;
 }
 
-.bottom a {
+.tag {
    margin-right: 1ch;}
 
 .Content img, .Content iframe {

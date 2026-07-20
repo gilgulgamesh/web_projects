@@ -7,7 +7,7 @@ end
 function pallete(name)
     sd = seed(name)
     bg = (175, 175, 175) .+ sd
-    text = 2.5 .* sd
+    text = 2 .* sd
     vivid = 7 .* sd
     link = (30,30,30) .+ vivid
     bg, text, vivid, link

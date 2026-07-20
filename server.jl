@@ -88,12 +88,12 @@ start!(server; host="0.0.0.0", port=8080, blocking=false)
 
 function sendwait()
 
-    println("uploaded $HTML_FILE to $SITE_LOC")
+    println("upload $HTML_FILE to $SITE_LOC")
     #add limiter
     upfiles = Dict()
-    for u in keys(getuserposts())
-        push!(upfiles, "pimkossible/private/u/$u.html" => "u/$u.html")
-    end
     push!(upfiles, HTML_FILE => SITE_LOC)
+    for f in readdir("pimkossible/private/pg")
+        push!(upfiles, "pimkossible/private/pg/$f" => "pg/$f")
+    end
     upload(upfiles)
 end

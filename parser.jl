@@ -39,18 +39,17 @@ function addpost!(postbody::String)
     sendwait()
 end
 
-function formatuser(user)
-    alphabet = "abcdefghijklmopqrstuvwxyz"
+function filter(user, alphabet)
     tmp = ""
     for c in user
-        if c in (alphabet * uppercase(alphabet))
+        if c in (alphabet)
             new_c = c
         else
             new_c = ""
         end
         tmp *= new_c
     end
-    user = uppercase(tmp[1]) * lowercase(tmp[2:end])
+    tmp
 end
 
 function makerow(postbody::String, rowcount::Int)
@@ -58,7 +57,7 @@ function makerow(postbody::String, rowcount::Int)
     isnothing(title) ? title = "" : nothing
     isnothing(tags) ? tags = "" : nothing
     date = cutedate(Dates.now())
-    user = formatuser(user)
+    user = filter(user, "abcdefghijklmnopqrstuvwxyz")
     postnumber = "#$(rowcount + 1)"
     row::Vector = [
         postnumber
@@ -69,6 +68,15 @@ function makerow(postbody::String, rowcount::Int)
         tags
     ]
 end
+
+
+NUMBER  = 1
+TITLE  = 2
+USER  = 3
+DATE  = 4
+CONTENT = 5
+TAGS = 6
+
 
 function makesafe(row::Vector)
     # upgrade to dompurify
@@ -87,20 +95,94 @@ function saverow(row::Vector,  saferow::Vector)
         io2 = open(EVIL_TSV_FILE,  "a")
         writedlm(io2, permutedims(row), ' ')
         close(io2)
-        saferow[6] =  saferow[6] * " unverified"
+        saferow[TAGS] =  saferow[TAGS] * " unverified"
     end
     io1 = open(TSV_FILE,  "a")
     writedlm(io1, permutedims(saferow), ' ')
     close(io1)
 end
 
-NUMBER  = 1
-TITLE  = 2
-USER  = 3
-DATE  = 4
-CONTENT = 5
-TAGS = 6
 
+
+getrows() = readdlm(TSV_FILE, ' ', String, header=true)[1]
+
+function gettagposts()
+    rows = getrows()
+    tagposts = Dict()
+    for row in eachrow(rows)
+        a = get!(tagposts, filter(row[NUMBER], "1234567890"), [])
+        push!(a, row)
+    end
+    for row in eachrow(rows)
+        for tag in split(row[TAGS])
+            a = get!(tagposts, filter(tag, "abcdefghijklmnopqrstuvwxyz1234567890"), [])
+            push!(a, row)
+        end
+    end
+    for row in eachrow(rows)
+        a = get!(tagposts, filter(row[USER], "abcdefghijklmnopqrstuvwxyz"), [])
+        push!(a, row)
+    end
+    tagposts
+end
+
+function getusers()
+    rows = getrows()
+    users = []
+    for row in eachrow(rows)
+        push!(users, filter(row[USER], "abcdefghijklmnopqrstuvwxyz"))
+    end
+    users
+end
+
+
+
+function updatehtml()
+    rows  = getrows()
+    tagposts = gettagposts()
+    users = getusers()
+
+    allboxed = []
+    for i in 1:size(rows, 1)
+        d = reverse(rows, dims=1)[i, 1:6]
+        push!(allboxed, postbox(d))
+    end
+
+    htmlposts = formathtml(allboxed, users)
+    write(HTML_FILE, htmlposts)
+
+    for t in keys(tagposts)
+        length(tagposts[t]) > 1 || continue
+        posts = tagposts[t]
+        tboxed = []
+        for i in eachindex(posts)
+            push!(tboxed, postbox(posts[i]))
+            # println(uboxed)
+        end
+        users = []
+        for p in posts
+            push!(users, p[USER])
+        end
+        htmlposts = formathtml(tboxed, users)
+        # @show t
+        touch("pimkossible/private/pg/$t.html")
+        write("pimkossible/private/pg/$t.html", htmlposts)
+
+    end
+
+
+end
+
+
+function formathtml(allboxed, users)
+    htmlposts = replace(string(Pretty(docubox(allboxed, users))),
+        "<html><html>" => "<html>",
+        "</html></html>" => "</html>" )
+ end
+
+#omfg i just want to cat, save, flip save flip cat. file systems are not arrays. good for personal things.
+#format
+#
 const html = m("html")
 const head = m("head")
 const meta = m("meta")
@@ -115,98 +197,58 @@ const section = m("section")
 const iframe = m("iframe")
 const video = m("video")
 const a = m("a")
-const at(x) = a(x, href="t/$x")
 const span = m("span")
 const div = m("div")
 const sub = m("sub")
+const link = m("link")
+const sup = m("sup")
 
-
-const link = m("link")#can this possible work recursively with stock.. .
-
-getrows() = readdlm(TSV_FILE, ' ', String, header=true)[1]
-
-function getuserposts()
-    rows = getrows()
-    userposts = Dict()
-    for r in eachrow(rows)
-        a = get!(userposts, r[USER], [])
-        push!(a, r)
-    end
-    userposts
-end
-
-function updatehtml()
-    rows  = getrows()
-    tags = rows[1:end, TAGS]
-    userposts = getuserposts()
-
-    allboxed = []
-    for i in 1:size(rows, 1)
-        d = reverse(rows, dims=1)[i, 1:6]
-        push!(allboxed, postbox(d))
-    end
-
-    htmlposts = formathtml(allboxed, keys(userposts))
-    write(HTML_FILE, htmlposts)
-
-    for u in keys(userposts)
-        posts = userposts[u]
-        uboxed = []
-        for i in length(posts):-1:1
-            push!(uboxed, postbox(posts[i]))
-        end
-        # println(uboxed)
-        htmlposts = formathtml(uboxed, [u])
-        touch("pimkossible/private/u/$u.html")
-        write("pimkossible/private/u/$u.html", htmlposts)
-
+function at(t)
+    t = filter(t, "abcdefghijklmnopqrstuvwxyz1234567890")
+    l = length(gettagposts()[t])
+    if l > 1
+        return span.tag(a("$t", href="/pg/$t"))
+    else
+        return span.tag(t)
     end
 end
 
-#FILTERS
-function formathtml(allboxed, users)
-    htmlposts = replace(string(Pretty(docubox(allboxed, users))),
-        "<html><html>" => "<html>",
-        "</html></html>" => "</html>" )
- end
-
-#omfg i just want to cat, save, flip save flip cat. file systems are not arrays. good for personal things.
-#format
-
-const postbox(row) =
-article(id=row[NUMBER][2:end], class=row[USER], #removes the #
-    h2.heading(
-        span.Title(row[TITLE])
-    ),
-    h4.subheading(
-        span(" " * cutedate(row[DATE]))
-    ),
-    div.Content(row[CONTENT]),
-    div.bottom(
-        a.User(row[USER], href="/u/$(row[USER])"),
-        span.Tags(at(row[NUMBER]), at.(split(row[TAGS]))
+function postbox(row)
+    article(id=row[NUMBER][2:end], class=row[USER], #removes the #
+        h2.heading(
+            span.Title(row[TITLE])
         ),
+        h4.subheading(
+            span(" " * cutedate(row[DATE]))
+        ),
+        div.Content(row[CONTENT]),
+        div.Tags(
+            at(row[USER]),
+            at(row[NUMBER]),
+            at.(split(row[TAGS]))
+        )
     )
-)
+end
 
-const docubox(allboxed, users) =
-html(
-    head(
-        meta(charset="UTF-8"),
-        link(rel="stylesheet", href="/style.css"),
-        style(makecss(users))
-    ),
-    body(
-        div(id="bannertext",
-            h1(a(bannertext, href="/")),
-            h1(a(href="/build/post-editor.html", "Post Editor")),
-            div(id="status",
-                h1("online?"),
-                iframe(src="https://content-edible.org/status.html";)
+function docubox(allboxed, users)
+    html(
+        head(
+            meta(charset="UTF-8"),
+            link(rel="stylesheet", href="/style.css"),
+            style(makecss(users))
+        ),
+        body(
+            div(id="bannertext",
+                h1(a(bannertext, href="/")),
+                h1(a(href="/build/post-editor.html", "Post Editor")),
+                div(id="status",
+                    h1("online?"),
+                    iframe(src="https://content-edible.org/status.html";)
+                ),
+            ),
+            section(id="posts",
+                allboxed,
             ),
         ),
-        section(id="posts",
-            allboxed,
-        ),
-    ),
-)
+    )
+end

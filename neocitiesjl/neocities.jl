@@ -6,7 +6,7 @@ include("neocities_config.jl")
 
 function myrun(x)
     println(x)
-    read(x)
+    run(x;wait=WAIT)
 end
 
 # set paths separately from newfiles.

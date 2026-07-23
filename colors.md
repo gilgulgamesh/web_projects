@@ -35,34 +35,6 @@ function nameprint(name)
 end
 ```
 
-```js
-
-
-function seed(name) {
-    var l = name.length;
-    var a = name[l-3];
-    var b = name[l-2];
-    var c = name[l-1];
-
-    var s1 = ((a.charCodeAt(0)-97)%26) ;
-    var s2 = ((b.charCodeAt(0)-97)%26) ;
-    var s3 = ((c.charCodeAt(0)-97)%26) ;
-    //bold shold be the color * 10
-
-    var bg = 'rgb(' + String(195+s1*0.75) + ', ' + String(195+s2*0.75) + ', ' + String(195+s3*0.75) + ')';
-    var fg = 'rgb(' + String(2.5*s1) + ', ' + String(2.5*s2) + ', ' + String(2.5*s3) + ')'; //3*?
-    var vivid = 'rgb(' + String(7*s1) + ', ' + String(7*s2) + ', ' + String(7*s3) + ')';
-
-    e = document.querySelector('article');
-    e.style.backgroundColor = bg;
-    e.style.color = fg;
-    e.querySelector('h2').style.color = vivid;;
-    e.querySelector('h4').style.color = vivid;;
-    e.querySelector('b').style.color = vivid;;
-    e.querySelector('a').style.color = vivid;;
-
-    console.log(e.style);
-};
 
 
 ```
@@ -85,7 +57,7 @@ end
 function s(name)
     sd = seed(name)
     i = (175, 175, 175) .+ sd
-    j = 3 .* sd
+    j = 2 .* sd
     k = 7 .* sd
     l = (30,30,30) .+ k
     println(Crayon(foreground = k, background = i), "   $name")

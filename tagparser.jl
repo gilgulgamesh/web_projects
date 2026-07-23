@@ -1,22 +1,20 @@
 using DelimitedFiles, Hyperscript
 
 function seed(str)
-    a, b, c = str[end-2:end]
-    (Int(a), Int(b), Int(c) .- 97) .%26
+    aa, b, c = str[end-2:end]
+   ((Int(aa), Int(b), Int(c)) .- 97) .%26
 end
 function pallete(name)
     sd = seed(name)
-    bg = (175, 175, 175) .+ sd
+    bg = (175, 175, 175) .* 2 .+ sd
     text = 2 .* sd
     vivid = 7 .* sd
-    link = (30,30,30) .+ vivid
-    bg, text, vivid, link
+    bg, text, vivid
 end
 
 const BG = 1
 const TEXT = 2
 const VIVID = 3
-const LINK = 4
 
 
 function gathercolors(users)

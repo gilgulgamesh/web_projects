@@ -30,7 +30,7 @@
    --faded-pim: hsl(96, 0%, 73%);
    /*--faded-pim: hsl(96, 26%, 73%);*/
 
-   --light-grey:rgb(175, 175, 175);
+   --light-grey:hsl(90, 0%, 80%);
    /*hsl(105, 13%, 74%);*/
    /*--article-bg-pim: rgb(190, 183, 187);*/
    --article-bg-grey: hsl(90, 0%, 80%);

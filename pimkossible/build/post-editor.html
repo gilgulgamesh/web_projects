@@ -5,15 +5,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Builder</title>
+    <title>Editor</title>
 
     <link href="../style.css" rel="stylesheet" type="text/css" media="all">
     <style>
-        /*:root {
-            --vivid-green: hsl(99.43, 70%, 30%);
-            --faded-pim: hsl(96, 26%, 73%);
-        }*/
-
+        :root {
+            --vivid-user:rgb(49, 140, 56);
+            --faded-user:rgb(182, 195, 183);
+            --text-user: hsl(10,10,10)
+        }
+        img {
+           max-width: 200px;
+           height: auto;
+        }
         body {
             background-color:var(--article-bg-grey);
             color: rgba(0, 0, 0, 0.7);
@@ -22,7 +26,7 @@
         }
 
         b {
-            color: var(--vivid-pim);
+            color: var(--vivid-user);
             /*font-weight: bold;*/
             font-size: 133%;
             line-height: 0.5;
@@ -33,12 +37,12 @@
         }
 
         [contenteditable] {
-            background-color: var(--faded-pim);
+            background-color: var(--faded-user);
             display: inline;
             white-space: normal;
             min-width: 30ch;
             hyphens: auto;
-            color: rgba(0, 0, 0, 0.7);
+            color:var(--text-user);
             margin: 0 4px;
             padding: 1px 4px;
             font-family: "verdana";
@@ -57,7 +61,7 @@
         }
 
         [contenteditable]:focus:empty::before {
-            color: var(--faded-pim);
+            color: var(--faded-user);
         }
 
         #Title-field:empty::before {
@@ -69,8 +73,9 @@
             display: block;
             max-width: 66ch;
             margin-left: 5vw;
-            color: rgba(0, 0, 0, 0.75);
+            color:var(--text-user);
             margin-top: 0.5ch;
+            opacity: 1 !important;
         }
 
         #Content-field:focus {
@@ -82,7 +87,7 @@
 
         #Content-field:empty::before {
             /*font-family:  "JuliaMono";*/
-            content: "Type here! I'm a normal textbox i promise!";
+            content: "       ";
         }
 
         iframe, button, input, label{
@@ -90,7 +95,7 @@
             color: rgba(0, 0, 0, 0.75);
         }
 
-        #header-footer-checkbox:checked~#header-code,
+        /*#header-footer-checkbox:checked~#header-code,
         #header-footer-checkbox:checked~#footer-code, {
             color: rgba(0, 0, 0, 0.75);
         }
@@ -102,20 +107,20 @@
 
         #select-all-checkbox:checked~#code-container {
             user-select: all;
-        }
+        }*/
 
         ::selection {
             background: rgba(255, 255, 255, 0.81);
-            color: rgba(0, 0, 0, 0.75);
+            color: var(--text-user);
         }
 
-        body:hover #body-code {
+        /*body:hover #body-code {
             color: rgba(0, 0, 0, 0.4);
         }
 
         #body-code:has(.edible:focus) {
             color: transparent;
-        }
+        }*/
 
         .code {
             /*font-family: "menlo" !important;*/
@@ -124,9 +129,9 @@
             transition: 2s;
         }
 
-        #code-container:hover {
+        /*#code-container:hover {
             color: transparent;
-        }
+        }*/
 
         #preview-window {
             font-family: "Verdana", Geneva, Tahoma, sans-serif;
@@ -139,11 +144,11 @@
             left: 0;
             margin: 0;
             /*background-color: rgba(326, 204, 168, 0.68);*/
-            background-color:hsla(326, 22%, 73%, 0.68);
+            background-color:var(--faded-user);
             width: 98%;
-            height: fit-content;
-
+            height: 15%;
             resize: vertical;
+            white-space: pre-wrap;
         }
 
         #preview {
@@ -185,6 +190,17 @@
         width:0
         }
 
+        h1, h2 {
+           color: var(--vivid-user) !important
+        }
+
+        #preview-window article {
+           margin: 0;
+           max-width: 100%;
+           background-color:transparent;
+           /*color:rgba(0,0,0,0.7)*/
+           content: "Post Editor";
+        }
     </style>
 
 </head>
@@ -199,10 +215,7 @@
         <label for="header-footer-checkbox">header/footer selectabe</label>
 </noscript>
 
-        <div id=preview-window scrolling="no"><iframe title='preview' id="preview" srcdoc="<h1 style=&quot;font-family: verdana; &quot;>
-    Post editor
-</h1> "></iframe>
-        </div><br><br>
+        <pre id=preview-window scrolling="no"></pre>
         <section class="code" id=header-code>&lt;!DOCTYPE html&gt;
 &lt;html&gt;
    &lt;head&gt;
@@ -216,32 +229,26 @@
 <section class="code" id=body-code>         &lt;article&gt;
             &lt;h2 class=<b>Title</b>&gt;<div class=edible contenteditable=true id="Title-field" onblur="ReplaceShit()"></div>&lt;/h2&gt;
             &lt;h4 class=date&gt;dd-mmm'yy&lt;/h4&gt;
-            &lt;div&gt;&lt;a class=<b>User</b>&gt;<span class=edible contenteditable=true id="User-field" onblur="ReplaceShit()"></span>&lt;/a&gt;
+            &lt;div&gt;&lt;a class=<b id="vivid-ex">User</b>&gt;<span oninput=recolor() class=edible contenteditable=true id="User-field" onblur="ReplaceShit()"></span>&lt;/a&gt;
                &lt;a class=<b>Tags</b>&gt;<div class=edible contenteditable=true id="Tags-field" onblur="ReplaceShit()"></div>&lt;/a&gt;
             &lt;/div&gt;
-            &lt;div class=<b>Content</b>&gt;<div onblur="ReplaceShit()" class=edible contenteditable=true
-                  id="Content-field">
-
-</div>            &lt;/div&gt;
+            &lt;div class=<b>Content</b>&gt;<pre oninput="ReplaceShit()" class=edible contenteditable=true
+                  id="Content-field"></pre>            &lt;/div&gt;
          &lt;/article&gt;</section>     <section class="code" id=footer-code>      &lt;/section&gt;
       &lt;script&gt; <div id=buttons>
                     <button id ="bold" onclick="adda(bold)"  type=button>&lt;b&gt;<span
                             style="font-weight: bold">bold</span>&lt;/b&gt;</button>
                     <button id ="italic"  style="font-family:Times New Roman;font-weight:bold" onclick="adda(italic)"  type=button><i>&lt;i&gt;italic&lt;/i&gt;</i></button>
-                    <button id ="h2" onclick="adda(h2)"  type=button>&lt;h2&gt;<span display:inline
-                            style="font-size: large">Big2</span>&lt;/h2&gt;</button>
+                    <button id ="h2" onclick="adda(h2)"  type=button>&lt;h2&gt;<span  display:inline
+                            style="font-size: large;color:var(--vivid-user)">Big2</span>&lt;/h2&gt;</button>
                     <button id ="alink" onclick="adda(alink)"  type=button>&lt;a&gt;<span
-                            style="text-decoration: underline;color: var(--link-pim)">a link</span>&lt;a&gt;</button>
+                            style="text-decoration: underline;color: var(--vivid-user)">a link</span>&lt;a&gt;</button>
                 </div>      &lt;/script&gt;
    &lt;/body&gt;
-&lt;/html&gt;
-
-            <!--
+&lt;/html&gt;<!--
    <input type="checkbox" id="vehicle1" name="vehicle1" value="Bike">
    <label for="vehicle1">Show Preview Frame</label><br>
-   -->
-
-        </section>
+   --></section>
  <form id="form" action="https://content-edible.org" method="POST">
 
             <input class="secret" type="text"  id="titleBox" name="Title">
@@ -249,7 +256,7 @@
              <input class="secret" type="text" id="contentBox" name="Content">
              <input class="secret" type="text" id="tagsBox" name="Tags">
 
-            <input style="background-color: var(--vivid-pim);color: white;" type="submit" value="Submit"> <!-- hardbake these in lol it's for poor ppl -->
+            <input style="background-color: var(--vivid-user);color: white;" type="submit" value="Submit"> <!-- hardbake these in lol it's for poor ppl -->
          </form>
 
             <iframe id="status" src="https://content-edible.org/status.html" style="height:2.3rem; width: 5rem; border;0px solid; display:inline"></iframe>
@@ -265,39 +272,66 @@
 
 
 
+function recolor() {
+   var name = document.querySelector("#User-field").innerText;
+   var name = name.toLowerCase();
+   var root =  document.querySelector(':root');
+   if  (name.length >2) {
+      var [bg, fg, vivid]= palette(name);
+      root.style.setProperty("--faded-user", bg);
+      root.style.setProperty("--text-use", fg);
+      root.style.setProperty('--vivid-user', vivid);
+   };
+};
+
+
+function seed(name) {
+   var l = name.length;
+   var a = name[l-3];
+   var b = name[l-2];
+   var c = name[l-1];
+
+   var s1 = ( (a.charCodeAt() - 97) %26 ) ;
+   var s2 = ( (b.charCodeAt() - 97) %26 ) ;
+   var s3 = ( (c.charCodeAt() - 97) %26 ) ;
+
+   return [s1, s2, s3];
+};
+
+function palette(name){
+
+   var [s1, s2, s3] = seed(name);
+   var bg = `rgb(${185 + s1}, ${185 + s2}, ${185 + s3})`;
+   var fg = `rgb(${2 * s1}, ${2 * s2}, ${2 * s3})`;
+   var vivid = `rgb(${7 * s1}, ${7 * s2}, ${7 * s3})`;
+   return [bg, fg, vivid]
+};
+
 // preview iframe
 function ReplaceShit() {
    var title = document.getElementById("Title-field")
-  var user = document.getElementById("User-field")
+   var user = document.getElementById("User-field")
    var content = document.getElementById("Content-field")
    var tags = document.getElementById("Tags-field")
 
+   var previewWindow = document.getElementById("preview-window");
 
-  var preview = document.getElementById("preview");
-  var previewWindow = document.getElementById("preview-window");
+   var titleBox = document.getElementById("titleBox")
+   var userBox = document.getElementById("userBox")
+   var contentBox = document.getElementById("contentBox")
+   var tagsBox = document.getElementById("tagsBox")
 
+   previewWindow.scrollTop += 10000;
 
-  var titleBox = document.getElementById("titleBox")
-  var userBox = document.getElementById("userBox")
-  var contentBox = document.getElementById("contentBox")
-  var tagsBox = document.getElementById("tagsBox")
-
-
-  preview.srcdoc =   "<head><meta charset=UTF-8 /><link rel=stylesheet href=https://pimkossible.neocities.org/style.css /></head><body style=background-color:transparent><section id=posts >" + content.innerText + "</section></body></html>";
+   previewWindow.innerHTML =    content.innerText
   // previewWindow.scrollTo(0, top);
 
+  titleBox.value = title.innerHTML;
+  userBox.value = user.innerHTML;
+  contentBox.value = content.innerHTML;
+  tagsBox.value = tags.innerHTML;
 
-
-
-  titleBox.value = title.innerHTML
-  userBox.value = user.innerHTML
-  contentBox.value = content.innerHTML
-  tagsBox.value = tags.innerHTML
-
-
-
-
-}
+};
 function AlignProperly() {
   var previewWindow = document.getElementById("preview");
 };
